@@ -1,0 +1,53 @@
+@import '../../styles/main.scss';
+
+
+.orders-section {
+    padding: $spacing-xl 0;
+    
+    h2 {
+        color: $primary-color;
+        margin-bottom: $spacing-lg;
+        text-align: center;
+    }
+}
+
+.orders-list {
+    margin-bottom: $spacing-lg;
+}
+
+.order-item {
+    background: $white;
+    padding: $spacing-md;
+    margin-bottom: $spacing-sm;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    &:hover {
+        background: lighten($primary-color, 45%);
+    }
+}
+
+.order-info {
+    flex-grow: 1;
+}
+
+.order-actions {
+    display: flex;
+    gap: $spacing-xs;
+}
+
+.delete-btn {
+    background: $accent-color;
+    color: $white;
+    border: none;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    &:hover {
+        background: darken($accent-color, 10%);
+    }
+}

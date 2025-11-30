@@ -1,0 +1,14 @@
+{
+  "name": "custpen",
+  "version": "1.0.0",
+  "description": "CUSTPEN Project",
+  "main": "index.html",
+  "scripts": {
+    "sass:watch": "sass --watch styles:styles pages:pages",
+    "sass:build": "sass styles:styles pages:pages --style=compressed",
+    "dev": "npm run sass:watch"
+  },
+  "devDependencies": {
+    "sass": "^1.69.5"
+  }
+}
