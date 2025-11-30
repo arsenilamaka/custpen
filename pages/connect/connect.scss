@@ -1,0 +1,37 @@
+@import '../../styles/main.scss';
+
+.connect-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: $spacing-xl 0;
+    
+    h2 {
+        color: $primary-color;
+        margin-bottom: $spacing-lg;
+        text-align: center;
+    }
+}
+
+.form-group {
+    margin-bottom: $spacing-md;
+    
+    label {
+        display: block;
+        margin-bottom: $spacing-xs;
+        font-weight: bold;
+        color: $text-color;
+    }
+    
+    input {
+        width: 100%;
+        padding: $spacing-sm;
+        border: 2px solid $primary-color;
+        border-radius: 4px;
+        font-size: $font-size-base;
+        
+        &:focus {
+            outline: none;
+            border-color: darken($primary-color, 10%);
+        }
+    }
+}
