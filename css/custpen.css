@@ -87,3 +87,72 @@ body {
   background: rgb(33.1380753138, 125.1882845188, 186.8619246862);
   transform: translateY(-2px);
 }
+
+.panels {
+  display: flex;
+  gap: 20px;
+}
+
+.panel {
+  background: #1b1b1b;
+  padding: 10px;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.dot.html {
+  background: #ff0000;
+  background-image: url();
+  background-repeat: no-repeat;
+}
+
+.dot.css {
+  background: #003c5a;
+  background-image: url();
+  background-repeat: no-repeat;
+}
+
+.dot.js {
+  background: #2bb7ff;
+  background-image: url();
+  background-repeat: no-repeat;
+}
+
+.title {
+  font-weight: bold;
+  color: #fff;
+}
+
+.content {
+  background: #000;
+  height: 240px;
+  border-radius: 4px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.content textarea {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  resize: none;
+  color: #fff;
+  font-size: 14px;
+  padding: 12px;
+  font-family: monospace;
+  line-height: 1.5;
+}
