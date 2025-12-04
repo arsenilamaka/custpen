@@ -1,53 +1,76 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CUSTPEN - Артисты</title>
     <link rel="stylesheet" href="../../css/main.css" />
     <link rel="stylesheet" href="../../css/custpen.css" />
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <header class="header">
-        <h1>CUSTPEN - Артисты</h1>
-        <nav class="nav">
-          <a href="../pages/projects/projects.html" class="nav-link">Главная</a>
-        </nav>
-      </header>
+        <header class="header">
+            <h1>CUSTPEN - Артисты</h1>
+            <nav class="nav">
+                <a href="../pages/projects/projects.html" class="nav-link">Главная</a>
+            </nav>
+        </header>
 
-      <main class="main-grid">
-        <div class="editor-wrap">
-          <div class="panels">
-            <div class="panel">
-              <div class="head">
-                <div class="dot html"></div>
-                <div class="title">HTML</div>
-                <div class="spacer"></div>
-              </div>
-              <div class="content"> <textarea></textarea> </div>
-            </div>
+        <main class="main-grid">
+            <div class="editor-wrap">
+                <div class="panels">
+                    <div class="panel">
+                        <div class="head">
+                            <div class="dot html"></div>
+                            <div class="title">HTML</div>
+                        </div>
+                        <div class="content">
+                            <div class="code-wrapper">
+                                <div class="line-numbers" id="html-numbers">1</div>
+                                <textarea id="html-code" class="code-editor"></textarea>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="panel">
-              <div class="head">
-                <div class="dot css"></div>
-                <div class="title">CSS</div>
-                <div class="spacer"></div>
-              </div>
-              <div class="content"> <textarea></textarea> </div>
-            </div>
+                    <div class="panel">
+                        <div class="head">
+                            <div class="dot css"></div>
+                            <div class="title">CSS</div>
+                        </div>
+                        <div class="content">
+                            <div class="code-wrapper">
+                                <div class="line-numbers" id="css-numbers">1</div>
+                                <textarea id="css-code" class="code-editor"></textarea>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="panel">
-              <div class="head">
-                <div class="dot js"></div>
-                <div class="title">JS</div>
-                <div class="spacer"></div>
-              </div>
-              <div class="content"> <textarea></textarea> </div>
+                    <div class="panel">
+                        <div class="head">
+                            <div class="dot js"></div>
+                            <div class="title">JS</div>
+                        </div>
+                        <div class="content">
+                            <div class="code-wrapper">
+                                <div class="line-numbers" id="js-numbers">1</div>
+                                <textarea id="js-code" class="code-editor"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-section">
+                    <div class="preview-header">
+                        <div class="preview-title">Результат</div>
+                    </div>
+                    <div class="preview-content">
+                        <iframe id="preview-frame"></iframe>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </main>
+        </main>
     </div>
-  </body>
+
+    <script src="../custpen/custren.js"></script>
+</body>
 </html>
