@@ -1,0 +1,359 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #2c3e50;
+  background-color: #ecf0f1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  background: #ffffff;
+  padding: 24px 0;
+  border-bottom: 2px solid #3498db;
+}
+.header h1 {
+  color: #3498db;
+  margin-bottom: 16px;
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+.nav-link {
+  color: #2c3e50;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.nav-link:hover {
+  background: #3498db;
+  color: #ffffff;
+}
+
+.main {
+  padding: 48px 0;
+  text-align: center;
+}
+.main h2 {
+  color: #3498db;
+  margin-bottom: 24px;
+}
+
+.btn {
+  background: #3498db;
+  color: #ffffff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: rgb(33.1380753138, 125.1882845188, 186.8619246862);
+  transform: translateY(-2px);
+}
+
+.connect-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 48px 0;
+}
+.connect-form h2 {
+  color: #3498db;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+.form-group input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: rgb(33.1380753138, 125.1882845188, 186.8619246862);
+}
+
+.sidebar-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  background: #2c3e50;
+  color: #ecf0f1;
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.3s ease, left 0.3s ease;
+}
+.sidebar-panel.open {
+  left: 0;
+  transform: translateX(0);
+}
+
+.sidebar-content {
+  padding: 20px;
+}
+
+.sidebar-title {
+  margin: 0 0 20px 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+  position: relative;
+  padding-right: 40px;
+}
+
+.menu-section {
+  margin-bottom: 25px;
+}
+.menu-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  margin: 0 0 10px 0;
+  color: #bdc3c7;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.section-items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sidebar-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ecf0f1;
+  border: none;
+  padding: 10px 15px;
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+.sidebar-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.sidebar-btn.active {
+  background: #3498db !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+.container {
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
+}
+.container.sidebar-open {
+  margin-left: 300px;
+}
+
+.content-area {
+  padding: 20px;
+}
+
+#contentTitle {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.content-card {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.code-example {
+  margin-top: 20px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 15px;
+}
+.code-example h4 {
+  margin-top: 0;
+  color: #495057;
+}
+.code-example pre {
+  margin: 0;
+  overflow-x: auto;
+}
+.code-example pre code {
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 14px;
+  color: #212529;
+}
+
+.content-actions {
+  margin-top: 25px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.content-actions .btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+.content-actions .btn-primary {
+  background: #3498db;
+  color: white;
+}
+.content-actions .btn-primary:hover {
+  background: rgb(33.1380753138, 125.1882845188, 186.8619246862);
+}
+.content-actions .btn-secondary {
+  background: #2ecc71;
+  color: white;
+}
+.content-actions .btn-secondary:hover {
+  background: rgb(36.616, 162.384, 89.948);
+}
+.content-actions .btn-back {
+  background: #7f8c8d;
+  color: white;
+}
+.content-actions .btn-back:hover {
+  background: #95a5a6;
+}
+
+.welcome-card {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 30px;
+  margin: 20px 0;
+}
+.welcome-card h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+.welcome-card ul {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+.welcome-card ul li {
+  margin-bottom: 10px;
+}
+
+.connect-form {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+.connect-form h2 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+.connect-form .form-group {
+  margin-bottom: 15px;
+}
+.connect-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.connect-form .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.connect-form .form-group input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+.connect-form .btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.connect-form .btn:hover {
+  background: rgb(33.1380753138, 125.1882845188, 186.8619246862);
+}
+
+@media (max-width: 768px) {
+  .sidebar-panel {
+    width: 100%;
+    max-width: 300px;
+    transform: translateX(-100%);
+  }
+  .sidebar-panel.open {
+    transform: translateX(0);
+  }
+  .container {
+    margin-left: 0 !important;
+  }
+  .container.sidebar-open {
+    margin-left: 0;
+  }
+  .content-actions {
+    flex-direction: column;
+  }
+  .content-actions .btn {
+    width: 100%;
+  }
+}
+
+
