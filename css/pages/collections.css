@@ -88,34 +88,4 @@ body {
   transform: translateY(-2px);
 }
 
-.connect-form {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 48px 0;
-}
-.connect-form h2 {
-  color: #3498db;
-  margin-bottom: 32px;
-  text-align: center;
-}
-
-.form-group {
-  margin-bottom: 24px;
-}
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #2c3e50;
-}
-.form-group input {
-  width: 100%;
-  padding: 16px;
-  border: 2px solid #3498db;
-  border-radius: 4px;
-  font-size: 16px;
-}
-.form-group input:focus {
-  outline: none;
-  border-color: rgb(33.1380753138, 125.1882845188, 186.8619246862);
-}
+/*# sourceMappingURL=collections.css.map */

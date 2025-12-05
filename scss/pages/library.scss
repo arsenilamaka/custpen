@@ -1,38 +1,346 @@
-@import '../utils/main.scss';
-@import '../utils/constanta.scss';
+@import "../utils/main.scss";
+@import "../utils/constanta.scss";
 
 .connect-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: $spacing-xl 0;
-    
-    h2 {
-        color: $primary-color;
-        margin-bottom: $spacing-lg;
-        text-align: center;
-    }
+  max-width: 500px;
+  margin: 0 auto;
+  padding: $spacing-xl 0;
+
+  h2 {
+    color: $primary-color;
+    margin-bottom: $spacing-lg;
+    text-align: center;
+  }
 }
 
 .form-group {
-    margin-bottom: $spacing-md;
+  margin-bottom: $spacing-md;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-weight: bold;
+    color: $text-color;
+  }
+
+  input {
+    width: 100%;
+    padding: $spacing-sm;
+    border: 2px solid $primary-color;
+    border-radius: 4px;
+    font-size: $font-size-base;
+
+    &:focus {
+      outline: none;
+      border-color: darken($primary-color, 10%);
+    }
+  }
+}
+// боковая панель
+$sidebar-bg: #2c3e50;
+$sidebar-color: white;
+$sidebar-width: 250px;
+$sidebar-transition: 0.3s ease;
+$sidebar-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+$sidebar-padding: 20px;
+
+$btn-bg: #34495e;
+$btn-hover: #3498db;
+$btn-radius: 6px;
+$btn-padding: 12px;
+
+$toggle-bg: #3498db;
+$toggle-padding: 10px 15px;
+$toggle-radius: 4px;
+
+
+// ===== ОБНОВЛЕННЫЕ СТИЛИ БОКОВОЙ ПАНЕЛИ =====
+
+// Переменные для обновленного меню
+$sidebar-expanded-width: 320px;
+$section-spacing: 25px;
+$item-spacing: 8px;
+$border-radius-lg: 12px;
+$border-radius-sm: 6px;
+
+// Основная боковая панель
+.sidebar-panel {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    background: $sidebar-bg;
+    color: $sidebar-text;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: transform 0.3s ease, left 0.3s ease;
     
-    label {
-        display: block;
-        margin-bottom: $spacing-xs;
-        font-weight: bold;
-        color: $text-color;
+    &.open {
+        left: 0;
+        transform: translateX(0);
+    }
+}
+
+.sidebar-content {
+    padding: 20px;
+}
+
+.sidebar-title {
+    margin: 0 0 20px 0;
+    color: $sidebar-title;
+    font-size: 1.5rem;
+    position: relative;
+    padding-right: 40px;
+}
+
+
+
+// Разделы меню
+.menu-section {
+    margin-bottom: 25px;
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.section-title {
+    margin: 0 0 10px 0;
+    color: $sidebar-section-title;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.section-items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-btn {
+    background: $sidebar-btn-bg;
+    color: $sidebar-btn-text;
+    border: none;
+    padding: 10px 15px;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        background: $sidebar-btn-hover;
     }
     
-    input {
-        width: 100%;
-        padding: $spacing-sm;
-        border: 2px solid $primary-color;
-        border-radius: 4px;
-        font-size: $font-size-base;
+    &.active {
+        background: $sidebar-btn-active !important;
+        color: white !important;
+        font-weight: bold;
+    }
+}
+
+// Основной контейнер
+.container {
+    transition: margin-left 0.3s ease;
+    min-height: 100vh;
+    
+    &.sidebar-open {
+        margin-left: 300px;
+    }
+}
+
+// Контент
+.content-area {
+    padding: 20px;
+}
+
+#contentTitle {
+    margin-bottom: 20px;
+    color: $content-title;
+}
+
+.content-card {
+    background: white;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.code-example {
+    margin-top: 20px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 15px;
+    
+    h4 {
+        margin-top: 0;
+        color: #495057;
+    }
+    
+    pre {
+        margin: 0;
+        overflow-x: auto;
         
-        &:focus {
-            outline: none;
-            border-color: darken($primary-color, 10%);
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            color: #212529;
         }
     }
 }
+
+.content-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.2s ease;
+        
+        &-primary {
+            background: $primary-color;
+            color: white;
+            
+            &:hover {
+                background: darken($primary-color, 10%);
+            }
+        }
+        
+        &-secondary {
+            background: $secondary-color;
+            color: white;
+            
+            &:hover {
+                background: darken($secondary-color, 10%);
+            }
+        }
+        
+        &-back {
+            background: #7f8c8d;
+            color: white;
+            
+            &:hover {
+                background: #95a5a6;
+            }
+        }
+    }
+}
+
+// Карточка приветствия
+.welcome-card {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 30px;
+    margin: 20px 0;
+    
+    h3 {
+        color: $content-title;
+        margin-bottom: 20px;
+    }
+    
+    ul {
+        margin: 15px 0;
+        padding-left: 20px;
+        
+        li {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+// Форма подключения
+.connect-form {
+    background: white;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    
+    h2 {
+        margin-top: 0;
+        color: $content-title;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            font-size: 16px;
+            
+            &:focus {
+                outline: none;
+                border-color: $primary-color;
+            }
+        }
+    }
+    
+    .btn {
+        background: $primary-color;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        
+        &:hover {
+            background: darken($primary-color, 10%);
+        }
+    }
+}
+
+// Медиа-запросы для адаптивности
+@media (max-width: 768px) {
+    .sidebar-panel {
+        width: 100%;
+        max-width: 300px;
+        transform: translateX(-100%);
+        
+        &.open {
+            transform: translateX(0);
+        }
+    }
+    
+    .container {
+        margin-left: 0 !important;
+        
+        &.sidebar-open {
+            margin-left: 0;
+        }
+    }
+    
+    .content-actions {
+        flex-direction: column;
+        
+        .btn {
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 769px) {
+    .sidebar-toggle {
+        display: none;
+    }
+}
+.test-red { color: red; }
