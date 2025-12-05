@@ -120,10 +120,7 @@
 .preview-content {
   height: 350px;
 }
-
-#preview-frame {
-  width: 100%;
-  height: 100%;
-  border: none;
-  background: white;
+.btn:hover {
+  background: rgb(33.1380753138, 125.1882845188, 186.8619246862);
+  transform: translateY(-2px);
 }

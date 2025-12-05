@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CUSTPEN - Подключение</title>
-    <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/library.css">
-</head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1>CUSTPEN - Подключение</h1>
-            <nav class="nav">
-                <a href="../pages/projects/projects.html" class="nav-link">Главная</a>
-                <a href="" class="nav-link">Домой</a>
-                <a href="../pages/spark/spark.html" class="nav-link">Заказы</a>
-            </nav>
-        </header>
-        
-        <main class="main">
-            <section class="connect-form">
-                <h2>Форма подключения</h2>
-                <form id="connectForm">
-                    <div class="form-group">
-                        <label for="username">Имя пользователя:</label>
-                        <input type="text" id="username" name="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <button type="submit" class="btn">Подключиться</button>
-                </form>
-            </section>
-        </main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CUSTPEN - Library</title>
+    <link rel="stylesheet" href="../../css/utils/main.css" />
+    <link rel="stylesheet" href="../../css/pages/library.css" />
+  </head>
+  <body>
+    <!-- Боковая панель - ОДИН раз! -->
+    <div class="sidebar-panel" id="sidebarPanel">
+      <div class="sidebar-content">
+        <h3 class="sidebar-title">Справочник разработчика</h3>
+      </div>
+    </div>
+  
+    <div class="container" id="mainContainer">
+      <header class="header">
+        <h1>CUSTPEN - Подключение</h1>
+        <nav class="nav">
+          <a href="../pages/projects/projects.html" class="nav-link">Главная</a>
+          <a href="" class="nav-link">Домой</a>
+          <a href="../pages/spark/spark.html" class="nav-link">Заказы</a>
+        </nav>
+      </header>
+      <main class="main">
+        <section class="content-area" id="contentArea">
+          <h2 id="contentTitle">Выберите раздел в меню</h2>
+          <div class="content-display" id="contentDisplay">
+            <p>Выберите тему из бокового меню для просмотра информации</p>
+          </div>
+          <button class="back-btn" id="backBtn" style="display:none;">← Назад к списку</button>
+        </section>
+      </main>
     </div>
 
-    <script src=""></script>
-</body>
+    <script src="library.js"></script>
+  </body>
 </html>

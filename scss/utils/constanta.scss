@@ -6,6 +6,98 @@ $text-color: #2c3e50;
 $background-color: #ecf0f1;
 $white: #ffffff;
 
+// ===== LIGHT THEME =====
+$light-primary: #3498db;
+$light-secondary: #2ecc71;
+$light-background: #ffffff;
+$light-surface: #f5f5f5;
+$light-text: #2c3e50;
+$light-text-secondary: #7f8c8d;
+$light-border: #ecf0f1;
+
+// ===== DARK THEME =====
+$dark-primary: #2980b9;
+$dark-secondary: #27ae60;
+$dark-background: #121212;
+$dark-surface: #1e1e1e;
+$dark-text: #ecf0f1;
+$dark-text-secondary: #bdc3c7;
+$dark-border: #2c3e50;
+
+// ===== THEME MAPS =====
+$themes: (
+  light: (
+    primary: $light-primary,
+    secondary: $light-secondary,
+    background: $light-background,
+    surface: $light-surface,
+    text: $light-text,
+    text-secondary: $light-text-secondary,
+    border: $light-border,
+  ),
+  dark: (
+    primary: $dark-primary,
+    secondary: $dark-secondary,
+    background: $dark-background,
+    surface: $dark-surface,
+    text: $dark-text,
+    text-secondary: $dark-text-secondary,
+    border: $dark-border,
+  )
+);
+
+// ===== MIXINS =====
+@mixin theme($property, $key, $important: false) {
+  @each $theme-name, $theme-colors in $themes {
+    .theme-#{$theme-name} & {
+      @if $important {
+        #{$property}: map-get($theme-colors, $key) !important;
+      } @else {
+        #{$property}: map-get($theme-colors, $key);
+      }
+    }
+  }
+}
+
+// ===== CSS VARIABLES APPROACH =====
+:root {
+  // Светлая тема по умолчанию
+  --primary: #{$light-primary};
+  --secondary: #{$light-secondary};
+  --background: #{$light-background};
+  --surface: #{$light-surface};
+  --text: #{$light-text};
+  --text-secondary: #{$light-text-secondary};
+  --border: #{$light-border};
+}
+
+[data-theme="dark"] {
+  --primary: #{$dark-primary};
+  --secondary: #{$dark-secondary};
+  --background: #{$dark-background};
+  --surface: #{$dark-surface};
+  --text: #{$dark-text};
+  --text-secondary: #{$dark-text-secondary};
+  --border: #{$dark-border};
+}
+
+// ===== USAGE EXAMPLES =====
+// Использование миксина
+.element {
+  @include theme(color, text);
+  @include theme(background-color, background);
+  
+  border: 1px solid;
+  @include theme(border-color, border);
+}
+
+// Использование CSS переменных
+.component {
+  color: var(--text);
+  background-color: var(--background);
+  border-color: var(--border);
+}
+
 // ===== TYPOGRAPHY =====
 $font-family-primary: 'Arial', sans-serif;
 $font-family-secondary: 'Georgia', serif;
@@ -23,3 +115,25 @@ $spacing-xl: 48px;
 $mobile: 768px;
 $tablet: 1024px;
 $desktop: 1200px;
+// ===== ПЕРЕМЕННЫЕ ДЛЯ БИБЛИОТЕКИ =====
+
+// Цвета боковой панели
+$sidebar-bg: #2c3e50;
+$sidebar-text: #ecf0f1;
+$sidebar-title: #ffffff;
+$sidebar-section-title: #bdc3c7;
+
+// Кнопки меню
+$sidebar-btn-bg: rgba(255, 255, 255, 0.1);
+$sidebar-btn-text: #ecf0f1;
+$sidebar-btn-hover: rgba(255, 255, 255, 0.2);
+$sidebar-btn-active: #3498db;
+
+// Основные цвета
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$border-color: #dee2e6;
+$content-title: #2c3e50;
+
+// Тени
+$box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
