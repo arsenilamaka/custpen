@@ -1,69 +1,80 @@
 @import "../utils/main.scss";
 @import "../utils/constanta.scss";
 
-.connect-form {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: $spacing-xl 0;
+// ===== СТИЛИ ДЛЯ КАТЕГОРИЙ С ВЫПАДАЮЩИМ СПИСКОМ =====
 
-  h2 {
-    color: $primary-color;
-    margin-bottom: $spacing-lg;
-    text-align: center;
-  }
+// Категории меню
+.category {
+    margin: 8px 0;
 }
 
-.form-group {
-  margin-bottom: $spacing-md;
-
-  label {
-    display: block;
-    margin-bottom: $spacing-xs;
-    font-weight: bold;
-    color: $text-color;
-  }
-
-  input {
+.category-btn {
     width: 100%;
-    padding: $spacing-sm;
-    border: 2px solid $primary-color;
-    border-radius: 4px;
-    font-size: $font-size-base;
-
-    &:focus {
-      outline: none;
-      border-color: darken($primary-color, 10%);
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.15);
     }
-  }
+    
+    &.active {
+        background: rgba(52, 152, 219, 0.3);
+        border-left: 3px solid $primary-color;
+    }
 }
-// боковая панель
-$sidebar-bg: #2c3e50;
-$sidebar-color: white;
-$sidebar-width: 250px;
-$sidebar-transition: 0.3s ease;
-$sidebar-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-$sidebar-padding: 20px;
 
-$btn-bg: #34495e;
-$btn-hover: #3498db;
-$btn-radius: 6px;
-$btn-padding: 12px;
+.sublist {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 10px;
+    
+    &.active {
+        max-height: 500px;
+    }
+}
 
-$toggle-bg: #3498db;
-$toggle-padding: 10px 15px;
-$toggle-radius: 4px;
+.item-btn {
+    width: 100%;
+    padding: 8px 15px;
+    margin: 2px 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: #ddd;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+    }
+    
+    &.active {
+        background: $primary-color;
+        color: white;
+        font-weight: bold;
+        
+        &:hover {
+            background: darken($primary-color, 10%);
+        }
+    }
+}
 
+// ===== БОКОВАЯ ПАНЕЛЬ =====
 
-// ===== ОБНОВЛЕННЫЕ СТИЛИ БОКОВОЙ ПАНЕЛИ =====
-
-// Переменные для обновленного меню
-$sidebar-expanded-width: 320px;
-$section-spacing: 25px;
-$item-spacing: 8px;
-$border-radius-lg: 12px;
-$border-radius-sm: 6px;
-
-// Основная боковая панель
 .sidebar-panel {
     position: fixed;
     left: 0;
@@ -71,13 +82,12 @@ $border-radius-sm: 6px;
     bottom: 0;
     width: 300px;
     background: $sidebar-bg;
-    color: $sidebar-text;
+    color: white;
     z-index: 1000;
     overflow-y: auto;
-    transition: transform 0.3s ease, left 0.3s ease;
+    transition: transform 0.3s ease;
     
     &.open {
-        left: 0;
         transform: translateX(0);
     }
 }
@@ -88,59 +98,12 @@ $border-radius-sm: 6px;
 
 .sidebar-title {
     margin: 0 0 20px 0;
-    color: $sidebar-title;
+    color: white;
     font-size: 1.5rem;
-    position: relative;
-    padding-right: 40px;
 }
 
+// ===== ОСНОВНОЙ КОНТЕЙНЕР =====
 
-
-// Разделы меню
-.menu-section {
-    margin-bottom: 25px;
-    
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
-
-.section-title {
-    margin: 0 0 10px 0;
-    color: $sidebar-section-title;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.section-items {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.sidebar-btn {
-    background: $sidebar-btn-bg;
-    color: $sidebar-btn-text;
-    border: none;
-    padding: 10px 15px;
-    text-align: left;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s ease;
-    
-    &:hover {
-        background: $sidebar-btn-hover;
-    }
-    
-    &.active {
-        background: $sidebar-btn-active !important;
-        color: white !important;
-        font-weight: bold;
-    }
-}
-
-// Основной контейнер
 .container {
     transition: margin-left 0.3s ease;
     min-height: 100vh;
@@ -150,7 +113,8 @@ $border-radius-sm: 6px;
     }
 }
 
-// Контент
+// ===== КОНТЕНТ =====
+
 .content-area {
     padding: 20px;
 }
@@ -192,45 +156,23 @@ $border-radius-sm: 6px;
     }
 }
 
-.content-actions {
-    margin-top: 25px;
+// Кнопки действий
+.actions {
     display: flex;
     gap: 10px;
-    flex-wrap: wrap;
+    margin-top: 20px;
     
-    .btn {
-        padding: 10px 20px;
+    button {
+        padding: 8px 16px;
+        background: #2c3e50;
+        color: white;
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        font-size: 14px;
         transition: background-color 0.2s ease;
         
-        &-primary {
-            background: $primary-color;
-            color: white;
-            
-            &:hover {
-                background: darken($primary-color, 10%);
-            }
-        }
-        
-        &-secondary {
-            background: $secondary-color;
-            color: white;
-            
-            &:hover {
-                background: darken($secondary-color, 10%);
-            }
-        }
-        
-        &-back {
-            background: #7f8c8d;
-            color: white;
-            
-            &:hover {
-                background: #95a5a6;
-            }
+        &:hover {
+            background: #3498db;
         }
     }
 }
@@ -258,58 +200,8 @@ $border-radius-sm: 6px;
     }
 }
 
-// Форма подключения
-.connect-form {
-    background: white;
-    border: 1px solid $border-color;
-    border-radius: 8px;
-    padding: 25px;
-    margin-bottom: 30px;
-    
-    h2 {
-        margin-top: 0;
-        color: $content-title;
-    }
-    
-    .form-group {
-        margin-bottom: 15px;
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid $border-color;
-            border-radius: 4px;
-            font-size: 16px;
-            
-            &:focus {
-                outline: none;
-                border-color: $primary-color;
-            }
-        }
-    }
-    
-    .btn {
-        background: $primary-color;
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        
-        &:hover {
-            background: darken($primary-color, 10%);
-        }
-    }
-}
+// ===== АДАПТИВНОСТЬ =====
 
-// Медиа-запросы для адаптивности
 @media (max-width: 768px) {
     .sidebar-panel {
         width: 100%;
@@ -329,18 +221,21 @@ $border-radius-sm: 6px;
         }
     }
     
-    .content-actions {
+    .actions {
         flex-direction: column;
         
-        .btn {
+        button {
             width: 100%;
         }
     }
-}
-
-@media (min-width: 769px) {
-    .sidebar-toggle {
-        display: none;
+    
+    .category-btn {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+    
+    .item-btn {
+        padding: 7px 12px;
+        font-size: 13px;
     }
 }
-.test-red { color: red; }
