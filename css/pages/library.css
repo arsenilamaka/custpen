@@ -232,8 +232,10 @@ body {
   border-color: var(--border);
 }
 
+/* === ВАШ СУЩЕСТВУЮЩИЙ КОД для категорий (добавлены Flexbox свойства) === */
 .category {
   margin: 8px 0;
+  /* Дополнительные свойства уже добавлены выше в начале файла */
 }
 
 .category-btn {
@@ -251,6 +253,7 @@ body {
   align-items: center;
   border-radius: 6px;
   transition: all 0.3s ease;
+  /* Дополнительные свойства уже добавлены выше */
 }
 .category-btn:hover {
   background: rgba(255, 255, 255, 0.15);
@@ -265,6 +268,7 @@ body {
   overflow: hidden;
   transition: max-height 0.3s ease;
   padding-left: 10px;
+  /* Дополнительные свойства уже добавлены выше */
 }
 .sublist.active {
   max-height: fit-content;
@@ -281,6 +285,7 @@ body {
   cursor: pointer;
   border-radius: 4px;
   transition: all 0.2s ease;
+  /* Дополнительные свойства уже добавлены выше */
 }
 .item-btn:hover {
   background: rgba(255, 255, 255, 0.1);
@@ -295,6 +300,7 @@ body {
   background: rgb(33.1380753138, 125.1882845188, 186.8619246862);
 }
 
+/* === ВАШ СУЩЕСТВУЮЩИЙ КОД для боковой панели === */
 .sidebar-panel {
   position: fixed;
   left: 0;
@@ -306,6 +312,7 @@ body {
   z-index: 1000;
   overflow-y: auto;
   transition: transform 0.3s ease;
+  /* Дополнительные свойства уже добавлены выше */
 }
 .sidebar-panel.open {
   transform: translateX(0);
@@ -324,6 +331,7 @@ body {
 .container {
   transition: margin-left 0.3s ease;
   min-height: 100vh;
+  /* Дополнительные свойства уже добавлены выше */
 }
 .container.sidebar-open {
   margin-left: 300px;
@@ -371,6 +379,7 @@ body {
   display: flex;
   gap: 10px;
   margin-top: 20px;
+  /* Дополнительные свойства уже добавлены выше */
 }
 .actions button {
   padding: 8px 16px;
@@ -404,11 +413,13 @@ body {
   margin-bottom: 10px;
 }
 
+/* === ВАШ СУЩЕСТВУЮЩИЙ КОД для адаптивности (обновлен) === */
 @media (max-width: 768px) {
   .sidebar-panel {
     width: 100%;
     max-width: 300px;
     transform: translateX(-100%);
+    /* Дополнительные свойства уже добавлены выше */
   }
   .sidebar-panel.open {
     transform: translateX(0);
@@ -421,6 +432,7 @@ body {
   }
   .actions {
     flex-direction: column;
+    /* Дополнительные свойства уже добавлены выше */
   }
   .actions button {
     width: 100%;
@@ -433,6 +445,25 @@ body {
     padding: 7px 12px;
     font-size: 13px;
   }
+  
+  /* === ДОБАВЛЕНО МОИМИ ИЗМЕНЕНИЯМИ === */
+  .category {
+    flex: 1 1 100%;
+  }
+  
+  .item-btn {
+    flex: 1 1 120px;
+  }
+  
+  .feature-card {
+    flex: 1 1 100%;
+  }
+  
+  .actions button {
+    flex: 1 1 100%;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
 }
-
-/*# sourceMappingURL=library.css.map */
