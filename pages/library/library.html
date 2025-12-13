@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="../../css/pages/library.css" />
   </head>
   <body>
+    <!-- === ДОБАВЛЕНО: Кнопка меню для мобильных устройств === -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">☰</button>
+    
     <!-- Боковая панель - ОДИН раз! -->
     <div class="sidebar-panel" id="sidebarPanel">
       <div class="sidebar-content">
         <h3 class="sidebar-title">Справочник разработчика</h3>
+        <!-- Меню будет создано через JavaScript -->
       </div>
     </div>
   
@@ -19,16 +23,47 @@
       <header class="header">
         <h1>CUSTPEN - Подключение</h1>
         <nav class="nav">
-          <a href="../pages/projects/projects.html" class="nav-link">Главная</a>
-          <a href="" class="nav-link">Домой</a>
-          <a href="../pages/spark/spark.html" class="nav-link">Заказы</a>
+          <a href="../../index.html" class="nav-link">Главная</a>
+          <a href="../projects/projects.html" class="nav-link">Проекты</a>
+          <a href="../custom/custom.html" class="nav-link">Редактор</a>
+          <a href="../spark/spark.html" class="nav-link">Заказы</a>
         </nav>
       </header>
       <main class="main">
         <section class="content-area" id="contentArea">
           <h2 id="contentTitle">Выберите раздел в меню</h2>
+          
+          <!-- === ДОБАВЛЕНО: Сетка карточек с Flexbox === -->
+          <div class="features-grid">
+            <div class="feature-card">
+              <h3>HTML</h3>
+              <p>Теги, атрибуты, семантика, формы</p>
+              <p class="hint">Нажмите на категорию в боковом меню</p>
+            </div>
+            <div class="feature-card">
+              <h3>CSS</h3>
+              <p>Селекторы, Flexbox, Grid, анимации</p>
+              <p class="hint">Используйте выпадающие меню</p>
+            </div>
+            <div class="feature-card">
+              <h3>JavaScript</h3>
+              <p>Функции, DOM, промисы, классы</p>
+              <p class="hint">Кликайте по темам для деталей</p>
+            </div>
+          </div>
+          
           <div class="content-display" id="contentDisplay">
-            <p>Выберите тему из бокового меню для просмотра информации</p>
+            <div class="welcome-card">
+              <h3>Добро пожаловать в справочник!</h3>
+              <p>Используйте боковое меню для навигации:</p>
+              <ul>
+                <li>Кликните на категорию (HTML, CSS, JS, Tools) для раскрытия меню</li>
+                <li>Выберите конкретную тему для просмотра информации</li>
+                <li>Используйте кнопки "Сохранить" и "Копировать"</li>
+                <li>На мобильных: нажмите кнопку ☰ для открытия меню</li>
+              </ul>
+              <p><strong>Flexbox меню:</strong> Все элементы используют CSS Flexbox для адаптивного расположения.</p>
+            </div>
           </div>
           <button class="back-btn" id="backBtn" style="display:none;">← Назад к списку</button>
         </section>

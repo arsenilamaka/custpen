@@ -295,6 +295,7 @@ body {
   background: rgb(33.1380753138, 125.1882845188, 186.8619246862);
 }
 
+/* === ВАШ СУЩЕСТВУЮЩИЙ КОД для боковой панели === */
 .sidebar-panel {
   position: fixed;
   left: 0;
@@ -324,6 +325,7 @@ body {
 .container {
   transition: margin-left 0.3s ease;
   min-height: 100vh;
+  /* Дополнительные свойства уже добавлены выше */
 }
 .container.sidebar-open {
   margin-left: 300px;
@@ -409,6 +411,7 @@ body {
     width: 100%;
     max-width: 300px;
     transform: translateX(-100%);
+    /* Дополнительные свойства уже добавлены выше */
   }
   .sidebar-panel.open {
     transform: translateX(0);
@@ -421,6 +424,7 @@ body {
   }
   .actions {
     flex-direction: column;
+    /* Дополнительные свойства уже добавлены выше */
   }
   .actions button {
     width: 100%;
