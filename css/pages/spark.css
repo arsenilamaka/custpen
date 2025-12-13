@@ -138,8 +138,10 @@ body {
 }
 
 /*# sourceMappingURL=spark.css.map */
+
+
 .cards-container {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -152,11 +154,6 @@ body {
       overflow: hidden;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
-      }
     }
 
     .card-image {

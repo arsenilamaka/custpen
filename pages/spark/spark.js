@@ -1,32 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Orders page loaded');  
-    
-    const ordersList = document.getElementById('ordersList');
-    const addOrderBtn = document.getElementById('addOrderBtn');
-    let orderCount = 0;
-    
-    function addOrder() {
-        orderCount++;
-        const orderItem = document.createElement('div');
-        orderItem.className = 'order-item';
-        orderItem.innerHTML = `
-            <div class="order-info">
-                <strong>Заказ #${orderCount}</strong>
-                <p>Статус: В обработке</p>
-            </div>
-            <div class="order-actions">
-                <button class="delete-btn" onclick="this.parentElement.parentElement.remove()">Удалить</button>
-            </div>
-        `;
-        ordersList.appendChild(orderItem);
-    }
-
-    addOrderBtn.addEventListener('click', addOrder);
-
-    addOrder();
-    addOrder();
-
-
     // kartoczki
     const cardsData = [
       {
@@ -35,6 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
         image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop',
         description: 'Click the glitchy button to open the CyberPopover complete with electro sound effects in this slick Pen from Jhey Tompkins. In classic Jhey fashion, this Pen is configurable! Open up the panel at the top right to tinker.'
       },
+      {
+        title: 'Everything you need to know about the Popover API',
+        link:'https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent',
+        image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop',
+        description: 'Get the rundown on how to use the Popover API in this beginner-friendly tutorial from Coding in Public on YouTube. You can play along with the Pen!'
+      },
+      ,
+      {
+        title: 'Everything you need to know about the Popover API',
+        link:'https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent',
+        image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop',
+        description: 'Get the rundown on how to use the Popover API in this beginner-friendly tutorial from Coding in Public on YouTube. You can play along with the Pen!'
+      }
+      ,
       {
         title: 'Everything you need to know about the Popover API',
         link:'https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent',
