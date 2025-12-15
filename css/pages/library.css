@@ -160,6 +160,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
 }
 
 .header {
@@ -366,6 +368,7 @@ body {
   background: rgb(44.1329113924, 91.75, 139.3670886076);
 }
 
+/* === ВАШ СУЩЕСТВУЮЩИЙ КОД для боковой панели === */
 .sidebar-panel {
   position: fixed;
   left: 0;
@@ -392,14 +395,6 @@ body {
   font-size: 1.5rem;
 }
 
-.container {
-  transition: margin-left 0.3s ease;
-  min-height: 100vh;
-  overflow: hidden;
-  max-width: none;
-  margin-right: 0;
-  padding-right: 0;
-}
 .container.sidebar-open {
   margin-left: 300px;
   margin-right: 0;
@@ -461,6 +456,7 @@ body {
   display: flex;
   gap: 10px;
   margin-top: 20px;
+  flex-direction: column;
 }
 .actions button {
   padding: 8px 16px;
@@ -519,9 +515,7 @@ body {
   .container.sidebar-open {
     margin-left: 0;
   }
-  .actions {
-    flex-direction: column;
-  }
+ 
   .actions button {
     width: 100%;
   }
@@ -535,4 +529,4 @@ body {
   }
 }
 
-/*# sourceMappingURL=library.css.map */
+
