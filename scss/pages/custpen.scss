@@ -1,4 +1,4 @@
-// Переменные
+// Переменные цветов как в VS Code
 $bg-dark: #1e1e1e;
 $bg-panel: #1e1e1e;
 $bg-header: #2d2d2d;
@@ -10,14 +10,21 @@ $text-gray: #858585;
 $text-dark: #333;
 
 $border-dark: #333;
-$border-light: #dee2e6;
+$border-light: #ddd;
 
 $html-color: #e34c26;
 $css-color: #264de4;
 $js-color: #f0db4f;
 
 $preview-bg: white;
-$preview-header-bg: #f8f9fa;
+$preview-header-bg: #f5f5f5;
+
+$history-bg: #2a2a2a;
+$history-header-bg: #3a3a3a;
+
+$button-save: #28a745;
+$button-load: #007bff;
+$button-delete: #dc3545;
 
 // Основные стили
 .panels {
@@ -31,7 +38,6 @@ $preview-header-bg: #f8f9fa;
   border-radius: 8px;
   overflow: hidden;
   flex: 1;
-  min-width: 0;
 }
 
 .head {
@@ -89,46 +95,148 @@ $preview-header-bg: #f8f9fa;
   min-width: 50px;
   line-height: 1.5;
   border-right: 1px solid $border-dark;
-  overflow: hidden;
   user-select: none;
 }
 
+// Редактор кода
 .code-editor {
   width: 100%;
   height: 100%;
   background: $bg-code;
   border: none;
-  color: #d4d4d4;
-  font-family: 'Consolas', 'Monaco', monospace;
-  font-size: 13px;
+  color: #d4d4d4; // Цвет текста как в VS Code
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
   line-height: 1.5;
   padding: 10px;
   resize: none;
   outline: none;
-  white-space: pre;
   overflow: auto;
+  tab-size: 2;
   
   &:focus {
     outline: none;
-    box-shadow: none;
   }
 }
 
-/* предпросмотр */
+// Кнопка сохранения
+.save-btn {
+  background: $button-save;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 15px;
+  font-size: 14px;
+  
+  &:hover {
+    background: darken($button-save, 10%);
+  }
+}
+
+// История
+.history-section {
+  background: $history-bg;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.history-header {
+  padding: 12px 20px;
+  background: $history-header-bg;
+  border-bottom: 1px solid $border-dark;
+}
+
+.history-title {
+  font-weight: bold;
+  color: $text-light;
+  font-size: 16px;
+}
+
+.history-content {
+  padding: 15px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.history-item {
+  background: #333;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-left: 3px solid $html-color;
+}
+
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.history-item-title {
+  font-weight: bold;
+  color: $text-light;
+  font-size: 14px;
+}
+
+.history-item-date {
+  color: $text-gray;
+  font-size: 12px;
+}
+
+.history-item-preview {
+  color: $text-gray;
+  font-size: 12px;
+  margin-bottom: 8px;
+  font-family: monospace;
+}
+
+.history-item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-load {
+  background: $button-load;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  
+  &:hover {
+    background: darken($button-load, 10%);
+  }
+}
+
+.btn-delete {
+  background: $button-delete;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+  
+  &:hover {
+    background: darken($button-delete, 10%);
+  }
+}
+
+// Предпросмотр
 .preview-section {
   background: $preview-bg;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .preview-header {
-  display: flex;
-  justify-content: center; 
-  align-items: center;
   padding: 12px 20px;
   background: $preview-header-bg;
   border-bottom: 1px solid $border-light;
+  text-align: center;
 }
 
 .preview-title {
@@ -145,5 +253,4 @@ $preview-header-bg: #f8f9fa;
   width: 100%;
   height: 100%;
   border: none;
-  background: $preview-bg;
 }

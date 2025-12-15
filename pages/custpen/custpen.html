@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CUSTPEN - Артисты</title>
-   <link rel="stylesheet" href="../../css/utils/main.css" />
+    <link rel="stylesheet" href="../../css/utils/main.css" />
     <link rel="stylesheet" href="../../css/pages/custpen.css" />
-  </head>
 </head>
 <body>
     <div class="container">
         <header class="header">
             <h1>CUSTPEN - Артисты</h1>
             <nav class="nav">
-                <a href="../pages/projects/projects.html" class="nav-link">Главная</a>
+                <a href="../projects/projects.html" class="nav-link">Главная</a>
+                <!-- ДОБАВЬ ЭТУ КНОПКУ -->
+                <button class="save-btn" id="save-btn">💾 Сохранить</button>
             </nav>
         </header>
 
@@ -60,6 +61,16 @@
                     </div>
                 </div>
 
+                <!-- ДОБАВЬ ЭТУ СЕКЦИЮ ИСТОРИИ -->
+                <div class="history-section">
+                    <div class="history-header">
+                        <div class="history-title">📜 История сохранений</div>
+                    </div>
+                    <div class="history-content" id="history-list">
+                        <!-- Здесь будут сохраненные сниппеты -->
+                    </div>
+                </div>
+
                 <div class="preview-section">
                     <div class="preview-header">
                         <div class="preview-title">Результат</div>
@@ -72,6 +83,6 @@
         </main>
     </div>
 
-    <script src="../custpen/custren.js"></script>
+    <script src="./custren.js"></script>
 </body>
 </html>
