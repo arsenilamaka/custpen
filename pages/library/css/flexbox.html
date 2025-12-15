@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #f0f0f0;
+            font-family: sans-serif;
+        }
+        h1 {
+            color: #2196F3;
+        }
+        h2 {
+            color: #64B5F6;
+            margin-top: 30px;
+        }
+        .property {
+            background: #2d2d2d;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border-left: 4px solid #2196F3;
+        }
+        code {
+            background: #000;
+            padding: 3px 6px;
+            border-radius: 3px;
+            color: #FF9800;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flexbox Свойства</h1>
+
+    <h2>Контейнер</h2>
+    <div class="property"><code>display: flex</code> – создает flex-контейнер</div>
+    <div class="property"><code>flex-direction</code> – направление (row, column)</div>
+    <div class="property"><code>justify-content</code> – выравнивание по главной оси</div>
+    <div class="property"><code>align-items</code> – выравнивание по поперечной оси</div>
+    <div class="property"><code>flex-wrap</code> – перенос элементов (wrap)</div>
+    <div class="property"><code>align-content</code> – выравнивание строк</div>
+    <div class="property"><code>gap</code> – расстояние между элементами</div>
+
+    <h2>Элементы</h2>
+    <div class="property"><code>flex-grow</code> – коэффициент растяжения</div>
+    <div class="property"><code>flex-shrink</code> – коэффициент сжатия</div>
+    <div class="property"><code>flex-basis</code> – базовый размер</div>
+    <div class="property"><code>flex</code> – краткая запись (grow shrink basis)</div>
+    <div class="property"><code>align-self</code> – свое выравнивание</div>
+    <div class="property"><code>order</code> – порядок отображения</div>
+</body>
+</html>

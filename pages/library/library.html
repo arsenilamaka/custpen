@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru"
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="../../css/pages/library.css" />
   </head>
   <body>
-    <!-- Боковая панель - ОДИН раз! -->
     <div class="sidebar-panel" id="sidebarPanel">
       <div class="sidebar-content">
         <h3 class="sidebar-title">Справочник разработчика</h3>
       </div>
     </div>
-  
+
     <div class="container" id="mainContainer">
       <header class="header">
         <h1>CUSTPEN - Подключение</h1>
@@ -26,15 +25,18 @@
       </header>
       <main class="main">
         <section class="content-area" id="contentArea">
-          <h2 id="contentTitle">Выберите раздел в меню</h2>
-          <div class="content-display" id="contentDisplay">
+          <h2 id="contentTitle">Выберите урок</h2>
+        <iframe 
+        id="lessonFrame" 
+        style="display: none; width: 100%; height: calc(100vh - 200px);"
+        title="Урок">
+      </iframe>
+        <div class="content-display" id="contentDisplay">
             <p>Выберите тему из бокового меню для просмотра информации</p>
           </div>
-          <button class="back-btn" id="backBtn" style="display:none;">← Назад к списку</button>
         </section>
       </main>
     </div>
-
     <script src="library.js"></script>
   </body>
 </html>
