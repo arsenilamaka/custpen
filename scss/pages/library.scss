@@ -1,6 +1,52 @@
 @import "../utils/main.scss";
 @import "../utils/constanta.scss";
 
+// ===== VS CODE ТЕМА ТОЛЬКО ДЛЯ БИБЛИОТЕКИ =====
+
+// Локальные переменные VS Code (изолированные, не затрагивают основной сайт)
+$library-vscode-bg: #1e1e1e;
+$library-vscode-sidebar-bg: #252526;
+$library-vscode-text: #d4d4d4;
+$library-vscode-blue: #569cd6;
+$library-vscode-green: #4ec9b0;
+$library-vscode-yellow: #dcdcaa;
+$library-vscode-orange: #ce9178;
+$library-vscode-purple: #c586c0;
+$library-vscode-red: #f44747;
+$library-vscode-cyan: #4fc1ff;
+$library-vscode-selection: #264f78;
+$library-vscode-border: #3e3e42;
+$library-vscode-hover-bg: #2a2d2e;
+
+// Локальные переопределения (только для библиотеки)
+$library-sidebar-bg: $library-vscode-sidebar-bg;
+$library-primary-color: $library-vscode-blue;
+$library-secondary-color: $library-vscode-green;
+
+// Категории для библиотеки
+$library-category-html: $library-vscode-orange;
+$library-category-css: $library-vscode-blue;
+$library-category-js: $library-vscode-yellow;
+$library-category-tools: $library-vscode-green;
+
+// ===== ШАГ 2: УБРАТЬ СКРОЛЛ =====
+
+.content-area {
+    overflow: hidden;
+    padding-right: 0;
+}
+
+#lessonFrame {
+    overflow: hidden;
+    border: none;
+    height: calc(100vh - 200px);
+}
+
+.main, .header, section {
+    margin-right: 0;
+    padding-right: 0;
+}
+
 // ===== СТИЛИ ДЛЯ КАТЕГОРИЙ С ВЫПАДАЮЩИМ СПИСКОМ =====
 
 // Категории меню
@@ -11,9 +57,9 @@
 .category-btn {
     width: 100%;
     padding: 12px 15px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border: none;
-    color: white;
+    color: $library-vscode-text;
     text-align: left;
     font-size: 16px;
     font-weight: bold;
@@ -25,12 +71,25 @@
     transition: all 0.3s ease;
     
     &:hover {
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.1);
     }
     
     &.active {
-        background: rgba(52, 152, 219, 0.3);
-        border-left: 3px solid $primary-color;
+        background: rgba(86, 156, 214, 0.2);
+        
+        // Цвет левой границы по категории
+        &[data-category="html"] {
+            border-left: 3px solid $library-category-html;
+        }
+        &[data-category="css"] {
+            border-left: 3px solid $library-category-css;
+        }
+        &[data-category="js"] {
+            border-left: 3px solid $library-category-js;
+        }
+        &[data-category="tools"] {
+            border-left: 3px solid $library-category-tools;
+        }
     }
 }
 
@@ -49,26 +108,28 @@
     width: 100%;
     padding: 8px 15px;
     margin: 2px 0;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
     border: none;
-    color: #ddd;
+    color: #b0b0b0;
     text-align: left;
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.2s ease;
     
     &:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.08);
         transform: translateX(5px);
+        color: $library-vscode-text;
     }
     
     &.active {
-        background: $primary-color;
+        background: $library-vscode-selection;
         color: white;
         font-weight: bold;
+        box-shadow: 0 0 10px rgba(86, 156, 214, 0.3);
         
         &:hover {
-            background: darken($primary-color, 10%);
+            background: lighten($library-vscode-selection, 5%);
         }
     }
 }
@@ -81,7 +142,7 @@
     top: 0;
     bottom: 0;
     width: 300px;
-    background: $sidebar-bg;
+    background: $library-sidebar-bg; // Используем локальную переменную
     color: white;
     z-index: 1000;
     overflow-y: auto;
@@ -122,9 +183,14 @@
 .container {
     transition: margin-left 0.3s ease;
     min-height: 100vh;
+    overflow: hidden;
+    max-width: none;
+    margin-right: 0;
+    padding-right: 0;
     
     &.sidebar-open {
         margin-left: 300px;
+        margin-right: 0;
     }
   }
 }
@@ -158,28 +224,39 @@
     
     button {
         padding: 8px 16px;
-        background: #2c3e50;
+        background: $library-vscode-blue;
         color: white;
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        transition: background-color 0.2s ease;
+        transition: all 0.2s ease;
+        font-family: 'Segoe UI', sans-serif;
         
         &:hover {
-            background: #3498db;
+            background: lighten($library-vscode-blue, 10%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(86, 156, 214, 0.3);
+        }
+        
+        &:first-child {
+            background: $library-vscode-green;
+            
+            &:hover {
+                background: lighten($library-vscode-green, 10%);
+                box-shadow: 0 4px 12px rgba(78, 201, 176, 0.3);
+            }
         }
     }
 }
 // ===== АДАПТИВНОСТЬ =====
 
 @media (max-width: 768px) {
-    // === ИЗМЕНЕНО: Адаптация Flexbox элементов ===
     .category {
-        flex: 1 1 100%; /* На мобильных - полная ширина */
+        flex: 1 1 100%; 
     }
     
     .item-btn {
-        flex: 1 1 120px; /* На мобильных - меньше */
+        flex: 1 1 120px;
     }
 }
 

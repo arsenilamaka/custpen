@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Grid</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #f0f0f0;
+            font-family: sans-serif;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        h2 {
+            color: #81C784;
+            margin-top: 30px;
+        }
+        .property {
+            background: #2d2d2d;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border-left: 4px solid #4CAF50;
+        }
+        code {
+            background: #000;
+            padding: 3px 6px;
+            border-radius: 3px;
+            color: #FF9800;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Grid Свойства</h1>
+
+    <h2>Контейнер</h2>
+    <div class="property"><code>display: grid</code> – создает grid-контейнер</div>
+    <div class="property"><code>grid-template-columns</code> – задает колонки (1fr 2fr 1fr)</div>
+    <div class="property"><code>grid-template-rows</code> – задает строки</div>
+    <div class="property"><code>gap</code> – расстояние между элементами</div>
+    <div class="property"><code>grid-template-areas</code> – именованные области</div>
+    <div class="property"><code>justify-items</code> – выравнивание по горизонтали</div>
+    <div class="property"><code>align-items</code> – выравнивание по вертикали</div>
+
+    <h2>Элементы</h2>
+    <div class="property"><code>grid-column</code> – позиция по колонкам (1 / 3)</div>
+    <div class="property"><code>grid-row</code> – позиция по строкам (span 2)</div>
+    <div class="property"><code>grid-area</code> – имя области</div>
+    <div class="property"><code>justify-self</code> – свое выравнивание по горизонтали</div>
+    <div class="property"><code>align-self</code> – свое выравнивание по вертикали</div>
+</body>
+</html>
