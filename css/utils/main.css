@@ -31,38 +31,55 @@ body {
   color: #2c3e50;
   background-color: #ecf0f1;
 }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
 .header {
-  background: #ffffff;
-  padding: 24px 0;
-  border-bottom: 2px solid #3498db;
-}
-.header h1 {
-  color: #3498db;
-  margin-bottom: 16px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0 40px;
 }
 
+.header-panel {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+/* Логотип */
+.header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #3b9ad8;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+/* Навигация */
 .nav {
-  display: flex;
-  gap: 24px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
 }
+
 .nav-link {
-  color: #2c3e50;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+    position: relative;
 }
-.nav-link:hover {
-  background: #3498db;
-  color: #ffffff;
+
+.nav-link a {
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 8px 0;
+    display: inline-block;
 }
+
+.nav-link a:hover {
+    color: #006aff;
+}
+
 
 .main {
   padding: 48px 0;

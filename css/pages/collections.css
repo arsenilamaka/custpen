@@ -32,38 +32,6 @@ body {
   background-color: #ecf0f1;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.header {
-  background: #ffffff;
-  padding: 24px 0;
-  border-bottom: 2px solid #3498db;
-}
-.header h1 {
-  color: #3498db;
-  margin-bottom: 16px;
-}
-
-.nav {
-  display: flex;
-  gap: 24px;
-}
-.nav-link {
-  color: #2c3e50;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-.nav-link:hover {
-  background: #3498db;
-  color: #ffffff;
-}
-
 .main {
   padding: 48px 0;
   text-align: center;
