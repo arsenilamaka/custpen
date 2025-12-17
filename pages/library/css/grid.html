@@ -5,52 +5,888 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Grid</title>
     <style>
-        body {
+        /* ===== ОСНОВНЫЕ СТИЛИ УРОКА CSS GRID ===== */
+        
+        /* Сброс и базовые стили */
+        * {
             margin: 0;
-            padding: 20px;
-            background: #1a1a1a;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             color: #f0f0f0;
-            font-family: sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
         }
+        
+        /* Контейнер урока */
+        .lesson-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        /* Шапка урока */
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
         h1 {
-            color: #4CAF50;
+            color: #ff6b6b;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+            font-weight: 700;
         }
+        
+        /* Теги уровня сложности */
+        .tag {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 8px 15px 0;
+            transition: transform 0.2s ease;
+        }
+        
+        .tag:hover {
+            transform: translateY(-2px);
+        }
+        
+        .tag-basic {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .tag-advanced {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+        }
+        
+        .lesson-description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #b0b0b0;
+        }
+        
+        /* Сетка контента */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin-bottom: 50px;
+        }
+        
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+        
+        /* Секции урока */
+        .lesson-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .lesson-section:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b6b;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
         h2 {
-            color: #81C784;
-            margin-top: 30px;
+            color: #ff6b6b;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 107, 107, 0.3);
+            font-size: 1.9rem;
+            font-weight: 600;
         }
-        .property {
-            background: #2d2d2d;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 6px;
-            border-left: 4px solid #4CAF50;
+        
+        h3 {
+            color: #4CAF50;
+            margin: 20px 0 15px 0;
+            font-size: 1.5rem;
         }
+        
+        /* Свойства Grid */
+        .grid-property {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border-left: 5px solid #4CAF50;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .grid-property:hover {
+            background: rgba(76, 175, 80, 0.15);
+            transform: translateX(8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .property-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .property-name {
+            font-weight: 700;
+            color: #4CAF50;
+            font-size: 1.25rem;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+        }
+        
+        .property-desc {
+            color: #d0d0d0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+        
+        /* Код */
         code {
-            background: #000;
-            padding: 3px 6px;
-            border-radius: 3px;
-            color: #FF9800;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 15px;
+            border-radius: 8px;
+            color: #FFD700;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            display: inline-block;
+            margin: 8px 0;
+            font-size: 1.1rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Демонстрационные блоки Grid */
+        .demo-container {
+            margin-top: 25px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .grid-demo {
+            display: grid;
+            gap: 15px;
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px solid #ff6b6b;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 15px 0;
+            min-height: 200px;
+        }
+        
+        .grid-item {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
+            cursor: pointer;
+        }
+        
+        .grid-item:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.5);
+        }
+        
+        /* Контролы и кнопки */
+        .demo-controls {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .lesson-button {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lesson-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.5);
+        }
+        
+        .lesson-button:active {
+            transform: translateY(-1px);
+        }
+        
+        /* Примеры кода */
+        .code-example {
+            margin-top: 35px;
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 6px solid #FFD700;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .code-example h4 {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .code-block {
+            overflow-x: auto;
+            padding: 20px;
+            background: #0d0d0d;
+            border-radius: 10px;
+            border: 1px solid #333;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Интерактивная демонстрация Grid */
+        .interactive-demo {
+            margin-top: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .interactive-demo h3 {
+            color: #ff6b6b;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+        }
+        
+        .slider-container {
+            margin: 25px 0;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .slider-container label {
+            display: block;
+            margin-bottom: 12px;
+            color: #ff6b6b;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 10px;
+            margin-bottom: 15px;
+            -webkit-appearance: none;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.5);
+        }
+        
+        .value-display {
+            text-align: center;
+            font-weight: 700;
+            color: #4CAF50;
+            margin-top: 8px;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+        }
+        
+        /* Grid lines visualizer */
+        .grid-lines {
+            position: relative;
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            padding: 10px;
+            height: 200px;
+        }
+        
+        /* Grid template areas */
+        .template-visualizer {
+            margin-top: 20px;
+        }
+        
+        .template-row {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            align-items: center;
+        }
+        
+        .template-label {
+            min-width: 80px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+        
+        /* Grid area демонстрация */
+        .grid-area-demo {
+            grid-template-areas:
+                "header header header"
+                "sidebar content content"
+                "footer footer footer";
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: 80px 1fr 60px;
+            gap: 15px;
+            height: 300px;
+        }
+        
+        .area-header { 
+            grid-area: header;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        }
+        
+        .area-sidebar { 
+            grid-area: sidebar;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        }
+        
+        .area-content { 
+            grid-area: content;
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+        }
+        
+        .area-footer { 
+            grid-area: footer;
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+        }
+        
+        /* Прогресс изучения */
+        .progress-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #64ffda);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        /* Футер урока */
+        .lesson-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            color: #888;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+        
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .lesson-section {
+                padding: 20px;
+            }
+            
+            .grid-property {
+                padding: 15px;
+            }
+            
+            .grid-item {
+                padding: 20px;
+            }
+            
+            .lesson-button {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .tag {
+                padding: 6px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .grid-area-demo {
+                grid-template-rows: 60px 1fr 50px;
+                height: 250px;
+            }
+        }
+        
+        /* Печать */
+        @media print {
+            .demo-controls,
+            .interactive-demo,
+            .lesson-button,
+            .progress-container,
+            input[type="range"],
+            .slider-container {
+                display: none !important;
+            }
+            
+            .lesson-container {
+                max-width: 100%;
+                padding: 0;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 10px;
+            }
+            
+            code {
+                background: #f5f5f5 !important;
+                color: #333 !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            .lesson-section {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes gridPulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+        }
+        
+        .grid-highlight {
+            animation: gridPulse 2s infinite;
         }
     </style>
 </head>
-<body>
-    <h1>CSS Grid Свойства</h1>
+<body class="lesson-page">
+    <div class="lesson-container">
+        <!-- ШАПКА УРОКА -->
+        <header class="lesson-header">
+            <h1>CSS Grid Свойства</h1>
+            <div class="lesson-tags">
+                <span class="tag tag-basic">Базовый</span>
+                <span class="tag tag-advanced">Продвинутый</span>
+            </div>
+            <p class="lesson-description">
+                Исчерпывающее руководство по CSS Grid Layout. 
+                Создавайте сложные макеты с помощью двумерной системы сеток.
+            </p>
+        </header>
 
-    <h2>Контейнер</h2>
-    <div class="property"><code>display: grid</code> – создает grid-контейнер</div>
-    <div class="property"><code>grid-template-columns</code> – задает колонки (1fr 2fr 1fr)</div>
-    <div class="property"><code>grid-template-rows</code> – задает строки</div>
-    <div class="property"><code>gap</code> – расстояние между элементами</div>
-    <div class="property"><code>grid-template-areas</code> – именованные области</div>
-    <div class="property"><code>justify-items</code> – выравнивание по горизонтали</div>
-    <div class="property"><code>align-items</code> – выравнивание по вертикали</div>
+        <!-- ОСНОВНОЙ КОНТЕНТ -->
+        <div class="content-grid">
+            
+            <!-- ЛЕВАЯ КОЛОНКА: СВОЙСТВА КОНТЕЙНЕРА -->
+            <section class="lesson-section">
+                <h2>Контейнер</h2>
+                
+                <!-- display: grid -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">display: grid</span>
+                        <span class="tag tag-basic">Базовый</span>
+                    </div>
+                    <p class="property-desc">Создает grid-контейнер. Основное свойство для активации Grid Layout.</p>
+                    <code>display: grid;</code>
+                    
+                    <div class="demo-container">
+                        <div class="grid-demo" style="grid-template-columns: 1fr 1fr 1fr;" id="basicGrid">
+                            <div class="grid-item">1</div>
+                            <div class="grid-item">2</div>
+                            <div class="grid-item">3</div>
+                            <div class="grid-item">4</div>
+                            <div class="grid-item">5</div>
+                            <div class="grid-item">6</div>
+                        </div>
+                    </div>
+                </div>
 
-    <h2>Элементы</h2>
-    <div class="property"><code>grid-column</code> – позиция по колонкам (1 / 3)</div>
-    <div class="property"><code>grid-row</code> – позиция по строкам (span 2)</div>
-    <div class="property"><code>grid-area</code> – имя области</div>
-    <div class="property"><code>justify-self</code> – свое выравнивание по горизонтали</div>
-    <div class="property"><code>align-self</code> – свое выравнивание по вертикали</div>
+                <!-- grid-template-columns -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">grid-template-columns</span>
+                        <span class="tag tag-basic">Базовый</span>
+                    </div>
+                    <p class="property-desc">Определяет количество и размеры колонок в сетке. Поддерживает fr, px, %, auto, minmax().</p>
+                    <code>grid-template-columns: 1fr 2fr 1fr;</code>
+                    
+                    <div class="demo-container">
+                        <div class="grid-demo" id="columnsDemo" style="grid-template-columns: 1fr 2fr 1fr;">
+                            <div class="grid-item">1fr</div>
+                            <div class="grid-item">2fr</div>
+                            <div class="grid-item">1fr</div>
+                        </div>
+                        <div class="demo-controls">
+                            <button class="lesson-button" onclick="changeColumns('1fr 1fr 1fr')">3 равные колонки</button>
+                            <button class="lesson-button" onclick="changeColumns('1fr 2fr 1fr')">Широкая средняя</button>
+                            <button class="lesson-button" onclick="changeColumns('100px 200px 100px')">Фиксированные</button>
+                            <button class="lesson-button" onclick="changeColumns('repeat(4, 1fr)')">4 колонки</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- grid-template-rows -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">grid-template-rows</span>
+                        <span class="tag tag-basic">Базовый</span>
+                    </div>
+                    <p class="property-desc">Определяет количество и размеры строк в сетке. Работает аналогично columns.</p>
+                    <code>grid-template-rows: 100px 200px;</code>
+                    
+                    <div class="demo-container">
+                        <div class="grid-demo" id="rowsDemo" style="grid-template-rows: 100px 200px;">
+                            <div class="grid-item">100px</div>
+                            <div class="grid-item">200px</div>
+                        </div>
+                        <div class="demo-controls">
+                            <button class="lesson-button" onclick="changeRows('100px 200px')">Разные высоты</button>
+                            <button class="lesson-button" onclick="changeRows('1fr 1fr')">Равные строки</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- gap -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">gap (grid-gap)</span>
+                        <span class="tag tag-basic">Базовый</span>
+                    </div>
+                    <p class="property-desc">Расстояние между элементами сетки. Можно задавать отдельно row-gap и column-gap.</p>
+                    <code>gap: 20px;</code>
+                    
+                    <div class="demo-container">
+                        <div class="grid-demo" id="gapDemo" style="gap: 20px; grid-template-columns: 1fr 1fr;">
+                            <div class="grid-item">1</div>
+                            <div class="grid-item">2</div>
+                            <div class="grid-item">3</div>
+                            <div class="grid-item">4</div>
+                        </div>
+                        <div class="slider-container">
+                            <label for="gapSlider">Gap: <span id="gapValue" class="value-display">20px</span></label>
+                            <input type="range" id="gapSlider" min="0" max="50" value="20" 
+                                   oninput="updateGap(this.value)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- grid-template-areas -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">grid-template-areas</span>
+                        <span class="tag tag-advanced">Продвинутый</span>
+                    </div>
+                    <p class="property-desc">Создает именованные области для сложных макетов. Очень мощный инструмент для layout.</p>
+                    <code>grid-template-areas: "header header" "sidebar main" "footer footer";</code>
+                    
+                    <div class="demo-container">
+                        <div class="grid-demo grid-area-demo">
+                            <div class="grid-item area-header">Header</div>
+                            <div class="grid-item area-sidebar">Sidebar</div>
+                            <div class="grid-item area-content">Main Content</div>
+                            <div class="grid-item area-footer">Footer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- justify-items -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">justify-items</span>
+                        <span class="tag tag-advanced">Продвинутый</span>
+                    </div>
+                    <p class="property-desc">Выравнивание элементов по горизонтали внутри их ячеек. Значения: start, end, center, stretch.</p>
+                    <code>justify-items: center;</code>
+                </div>
+
+                <!-- align-items -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">align-items</span>
+                        <span class="tag tag-advanced">Продвинутый</span>
+                    </div>
+                    <p class="property-desc">Выравнивание элементов по вертикали внутри их ячеек. Работает аналогично justify-items.</p>
+                    <code>align-items: center;</code>
+                </div>
+            </section>
+
+            <!-- ПРАВАЯ КОЛОНКА: СВОЙСТВА ЭЛЕМЕНТОВ И ИНТЕРАКТИВ -->
+            <section class="lesson-section">
+                <h2>Элементы</h2>
+
+                <!-- grid-column -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">grid-column</span>
+                        <span class="tag tag-basic">Базовый</span>
+                    </div>
+                    <p class="property-desc">Определяет начальную и конечную линии колонок для элемента. Можно использовать span.</p>
+                    <code>grid-column: 1 / 3;</code>
+                    <code>grid-column: span 2;</code>
+                    
+                    <div class="demo-container">
+                        <div class="grid-demo" style="grid-template-columns: 1fr 1fr 1fr;">
+                            <div class="grid-item" style="grid-column: 1 / 3;">grid-column: 1 / 3</div>
+                            <div class="grid-item">Обычный</div>
+                            <div class="grid-item">Обычный</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- grid-row -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">grid-row</span>
+                        <span class="tag tag-basic">Базовый</span>
+                    </div>
+                    <p class="property-desc">Определяет начальную и конечную линии строк для элемента.</p>
+                    <code>grid-row: 1 / 3;</code>
+                    <code>grid-row: span 2;</code>
+                </div>
+
+                <!-- grid-area -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">grid-area</span>
+                        <span class="tag tag-advanced">Продвинутый</span>
+                    </div>
+                    <p class="property-desc">Краткая запись для grid-row-start, grid-column-start, grid-row-end, grid-column-end. Или имя области.</p>
+                    <code>grid-area: 1 / 1 / 3 / 3;</code>
+                </div>
+
+                <!-- justify-self -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">justify-self</span>
+                        <span class="tag tag-advanced">Продвинутый</span>
+                    </div>
+                    <p class="property-desc">Индивидуальное выравнивание элемента по горизонтали. Переопределяет justify-items.</p>
+                    <code>justify-self: center;</code>
+                </div>
+
+                <!-- align-self -->
+                <div class="grid-property">
+                    <div class="property-title">
+                        <span class="property-name">align-self</span>
+                        <span class="tag tag-advanced">Продвинутый</span>
+                    </div>
+                    <p class="property-desc">Индивидуальное выравнивание элемента по вертикали. Переопределяет align-items.</p>
+                    <code>align-self: center;</code>
+                </div>
+
+                <!-- ИНТЕРАКТИВНАЯ ДЕМОНСТРАЦИЯ GRID -->
+                <div class="interactive-demo">
+                    <h3>🎯 Интерактивная демонстрация Grid</h3>
+                    
+                    <div class="slider-container">
+                        <label for="gridGapSlider">Gap (расстояние между элементами): 
+                            <span id="gridGapValue" class="value-display">20px</span>
+                        </label>
+                        <input type="range" id="gridGapSlider" min="0" max="50" value="20" 
+                               oninput="updateGridGap(this.value)">
+                    </div>
+
+                    <div class="slider-container">
+                        <label for="columnsSlider">Количество колонок: 
+                            <span id="columnsValue" class="value-display">3</span>
+                        </label>
+                        <input type="range" id="columnsSlider" min="1" max="6" value="3" 
+                               oninput="updateColumns(this.value)">
+                    </div>
+
+                    <div class="grid-demo" id="interactiveGridDemo" style="grid-template-columns: repeat(3, 1fr);">
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">2</div>
+                        <div class="grid-item">3</div>
+                        <div class="grid-item">4</div>
+                        <div class="grid-item">5</div>
+                        <div class="grid-item">6</div>
+                    </div>
+
+                    <div class="demo-controls">
+                        <button class="lesson-button" onclick="resetGridDemo()">🔄 Сбросить</button>
+                        <button class="lesson-button" onclick="printLesson()">🖨️ Печать урока</button>
+                        <button class="lesson-button" onclick="shareLesson()">🔗 Поделиться</button>
+                        <button class="lesson-button" onclick="markGridAsComplete()">✅ Отметить пройденным</button>
+                    </div>
+                </div>
+
+                <!-- ПРОГРЕСС ИЗУЧЕНИЯ -->
+                <div class="progress-container">
+                    <h4>📊 Прогресс изучения</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">Прогресс: 0%</p>
+                </div>
+
+                <!-- ПРИМЕР КОДА -->
+                <div class="code-example">
+                    <h4>💻 Пример практического использования CSS Grid:</h4>
+                    <pre class="code-block"><code>/* Основной layout страницы */
+.page-layout {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "sidebar content sidebar2"
+        "footer footer footer";
+    grid-template-columns: 250px 1fr 200px;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.content { grid-area: content; }
+.sidebar2 { grid-area: sidebar2; }
+.footer { grid-area: footer; }
+
+/* Сетка карточек */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Галерея изображений */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 15px;
+}
+
+.photo-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.photo-item:nth-child(1) { grid-column: span 2; }
+.photo-item:nth-child(2) { grid-row: span 2; }
+
+/* Мобильная адаптивность */
+@media (max-width: 768px) {
+    .page-layout {
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "content"
+            "sidebar2"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}</code></pre>
+                </div>
+            </section>
+        </div>
+
+        <!-- ФУТЕР УРОКА -->
+        <footer class="lesson-footer">
+            <p>© 2024 CUSTPEN - Справочник разработчика. Урок "CSS Grid Свойства".</p>
+            <p>Создавайте современные адаптивные макеты с помощью CSS Grid Layout.</p>
+            <p>Двумерная система сеток | Именованные области | Авторазмещение</p>
+        </footer>
+    </div>
 </body>
 </html>

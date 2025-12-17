@@ -37,7 +37,6 @@ $library-category-tools: $library-vscode-green;
 }
 
 #lessonFrame {
-    overflow: hidden;
     border: none;
     height: calc(100vh - 200px);
 }
@@ -214,7 +213,7 @@ $library-category-tools: $library-vscode-green;
       margin-bottom: 10px;
     }
   }
-}
+
 
 // Кнопки действий
 .actions {
