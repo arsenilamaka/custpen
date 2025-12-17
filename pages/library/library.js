@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const lessonMap = {
         // ИСПРАВЛЕННЫЕ ПУТИ
         'Flexbox': 'css/flexbox.html',
-        'CSS Grid': 'css/grid.html',
         'Grid': 'css/grid.html'
     };
 
@@ -96,6 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('selectedLessonTitle', item);
 
             console.log('Загружаем урок:', lessonFile);
+            
+            // 🔧 ДОБАВЛЕНО: Инициализируем интерактивность для загруженного урока
+            setTimeout(initLoadedLessonInteractivity, 300);
         } else {
             // СТАТИЧНЫЙ КОНТЕНТ (как было)
             contentTitle.textContent = item;
@@ -162,6 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             btn.classList.add('active');
                         }
                     });
+                    
+                    // 🔧 ДОБАВЛЕНО: Инициализируем интерактивность для восстановленного урока
+                    setTimeout(initLoadedLessonInteractivity, 300);
                 }, 100);
             }
         }
@@ -180,4 +185,246 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sidebar) sidebar.classList.toggle('open', !isMobile);
         if (mainContainer) mainContainer.classList.toggle('sidebar-open', !isMobile);
     });
+
+    // ===== НОВЫЙ РАЗДЕЛ: ИНТЕРАКТИВНОСТЬ ДЛЯ УРОКОВ =====
+    // ⭐ ДОБАВЛЕНО: Интеграция интерактивных функций для Flexbox/Grid уроков
+    // ⭐ ЗАЧЕМ: Чтобы уроки имели интерактивные демонстрации без изменения HTML
+    // ⭐ КАК РАБОТАЕТ: Проверяет загруженный iframe и добавляет функциональность
+
+    // 🔧 Инициализация интерактивности для загруженного урока в iframe
+    function initLoadedLessonInteractivity() {
+        const lessonFrame = document.getElementById('lessonFrame');
+        if (!lessonFrame || !lessonFrame.src) return;
+        
+        // Определяем тип урока по URL
+        const isFlexbox = lessonFrame.src.includes('flexbox.html');
+        const isGrid = lessonFrame.src.includes('grid.html');
+        
+        if (isFlexbox) {
+            console.log('Инициализация интерактивности для Flexbox урока');
+            initFlexboxInteractivity();
+        }
+        
+        if (isGrid) {
+            console.log('Инициализация интерактивности для Grid урока');
+            initGridInteractivity();
+        }
+    }
+
+    // 🔧 Интерактивные функции для Flexbox урока
+    function initFlexboxInteractivity() {
+        // ⚠️ Функции добавляются в глобальную область видимости window
+        // чтобы их можно было вызывать из onclick в HTML урока
+        
+        // Изменение направления flex-direction
+        window.changeDirection = function(direction) {
+            const demo = document.querySelector('#lessonFrame')?.contentDocument?.getElementById('directionDemo');
+            if (!demo) return;
+            
+            demo.style.flexDirection = direction;
+            
+            // Обновляем текст элементов для наглядности
+            const items = demo.querySelectorAll('.demo-item');
+            if (direction.includes('reverse')) {
+                items.forEach((item, index) => {
+                    item.textContent = 3 - index;
+                });
+            } else {
+                items.forEach((item, index) => {
+                    item.textContent = index + 1;
+                });
+            }
+            
+            updateLessonProgress('flexbox');
+        };
+        
+        // Изменение justify-content
+        window.changeJustify = function(justify) {
+            const demo = document.querySelector('#lessonFrame')?.contentDocument?.getElementById('justifyDemo');
+            if (demo) {
+                demo.style.justifyContent = justify;
+                updateLessonProgress('flexbox');
+            }
+        };
+        
+        // Изменение align-items
+        window.changeAlign = function(align) {
+            const demo = document.querySelector('#lessonFrame')?.contentDocument?.getElementById('alignDemo');
+            if (demo) {
+                demo.style.alignItems = align;
+                updateLessonProgress('flexbox');
+            }
+        };
+        
+        // Обновление gap
+        window.updateGap = function(value) {
+            const iframeDoc = document.querySelector('#lessonFrame')?.contentDocument;
+            if (!iframeDoc) return;
+            
+            const gapValue = iframeDoc.getElementById('gapValue');
+            const interactiveDemo = iframeDoc.getElementById('interactiveDemo');
+            
+            if (gapValue && interactiveDemo) {
+                gapValue.textContent = value + 'px';
+                interactiveDemo.style.gap = value + 'px';
+                updateLessonProgress('flexbox');
+            }
+        };
+        
+        // Обновление flex-grow
+        window.updateGrow = function(value) {
+            const iframeDoc = document.querySelector('#lessonFrame')?.contentDocument;
+            if (!iframeDoc) return;
+            
+            const growValue = iframeDoc.getElementById('growValue');
+            const item2 = iframeDoc.getElementById('item2');
+            
+            if (growValue && item2) {
+                growValue.textContent = value;
+                item2.style.flexGrow = value;
+                item2.textContent = `Flex-grow: ${value}`;
+                updateLessonProgress('flexbox');
+            }
+        };
+        
+        // Сброс демонстрации
+        window.resetDemo = function() {
+            const iframeDoc = document.querySelector('#lessonFrame')?.contentDocument;
+            if (!iframeDoc) return;
+            
+            const gapSlider = iframeDoc.getElementById('gapSlider');
+            const growSlider = iframeDoc.getElementById('growSlider');
+            
+            if (gapSlider && growSlider) {
+                gapSlider.value = 20;
+                growSlider.value = 1;
+                updateGap(20);
+                updateGrow(1);
+                
+                // Сброс всех демо
+                const directionDemo = iframeDoc.getElementById('directionDemo');
+                const justifyDemo = iframeDoc.getElementById('justifyDemo');
+                const alignDemo = iframeDoc.getElementById('alignDemo');
+                
+                if (directionDemo) directionDemo.style.flexDirection = 'row';
+                if (justifyDemo) justifyDemo.style.justifyContent = 'center';
+                if (alignDemo) alignDemo.style.alignItems = 'stretch';
+                
+                alert('Демонстрация сброшена к начальным значениям!');
+            }
+        };
+        
+        // Печать урока
+        window.printLesson = function() {
+            const lessonFrame = document.getElementById('lessonFrame');
+            if (lessonFrame && lessonFrame.contentWindow) {
+                lessonFrame.contentWindow.print();
+            } else {
+                window.print();
+            }
+        };
+        
+        // Поделиться уроком
+        window.shareLesson = function() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Урок Flexbox - CUSTPEN',
+                    text: 'Изучите CSS Flexbox с интерактивными примерами',
+                    url: window.location.href
+                })
+                .then(() => console.log('Урок успешно расшарен'))
+                .catch(error => console.log('Ошибка шаринга:', error));
+            } else {
+                const url = window.location.href;
+                navigator.clipboard.writeText(url)
+                    .then(() => alert('Ссылка на урок скопирована в буфер обмена!'))
+                    .catch(err => alert('Не удалось скопировать ссылку: ' + err));
+            }
+        };
+        
+        // Отметить как пройденный
+        window.markAsComplete = function() {
+            localStorage.setItem('flexbox_lesson_completed', 'true');
+            localStorage.setItem('flexbox_lesson_completed_date', new Date().toISOString());
+            updateLessonProgress('flexbox', 100);
+            alert('🎉 Урок отмечен как пройденный! Прогресс сохранен.');
+        };
+        
+        // Инициализация прогресса при загрузке
+        const progress = localStorage.getItem('flexbox_progress') || 0;
+        const iframeDoc = document.querySelector('#lessonFrame')?.contentDocument;
+        if (iframeDoc) {
+            const progressFill = iframeDoc.getElementById('progressFill');
+            const progressText = iframeDoc.getElementById('progressText');
+            
+            if (progressFill && progressText) {
+                progressFill.style.width = progress + '%';
+                progressText.textContent = `Прогресс: ${progress}%`;
+            }
+        }
+        
+        console.log('Flexbox интерактивность инициализирована');
+    }
+
+    // 🔧 Обновление прогресса урока
+    function updateLessonProgress(lessonType, specificValue = null) {
+        const storageKey = `${lessonType}_progress`;
+        let progress = specificValue !== null ? specificValue : parseInt(localStorage.getItem(storageKey)) || 0;
+        
+        if (specificValue === null && progress < 95) {
+            progress += 5;
+        }
+        
+        localStorage.setItem(storageKey, progress);
+        
+        // Обновляем отображение в iframe
+        const iframeDoc = document.querySelector('#lessonFrame')?.contentDocument;
+        if (iframeDoc) {
+            const progressFill = iframeDoc.getElementById('progressFill');
+            const progressText = iframeDoc.getElementById('progressText');
+            
+            if (progressFill && progressText) {
+                progressFill.style.width = progress + '%';
+                progressText.textContent = `Прогресс: ${progress}%`;
+            }
+        }
+    }
+
+    // 🔧 Интерактивные функции для Grid урока (заглушка)
+    function initGridInteractivity() {
+        console.log('Grid интерактивность загружена (заглушка)');
+        // Здесь будет аналогичная логика для Grid
+        // Можно добавить позже
+    }
+
+    // 🔧 Проверяем, если мы уже на странице урока (не в iframe)
+    function checkIfOnLessonPage() {
+        const currentPage = window.location.pathname;
+        const isFlexboxPage = currentPage.includes('flexbox.html');
+        const isGridPage = currentPage.includes('grid.html');
+        
+        if (isFlexboxPage || isGridPage) {
+            console.log('Прямой доступ к уроку, инициализируем интерактивность');
+            // Если открыли урок напрямую, а не через iframe
+            if (isFlexboxPage) initDirectFlexboxInteractivity();
+            if (isGridPage) initDirectGridInteractivity();
+        }
+    }
+
+    // 🔧 Инициализация для прямого доступа к уроку Flexbox
+    function initDirectFlexboxInteractivity() {
+        // Логика аналогичная, но для прямого доступа (без iframe)
+        // Здесь можно продублировать функции, но без обращения к contentDocument
+        console.log('Прямая инициализация Flexbox урока');
+    }
+
+    // 🔧 Инициализация для прямого доступа к уроку Grid
+    function initDirectGridInteractivity() {
+        console.log('Прямая инициализация Grid урока (заглушка)');
+    }
+
+    // 🔧 Запускаем проверку при загрузке
+    setTimeout(checkIfOnLessonPage, 100);
+    
+    console.log('Library.js полностью загружен с интерактивностью для уроков');
 });

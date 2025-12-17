@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .some-element {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -160,8 +161,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
-  transition: margin-left 0.3s ease;
-  min-height: 100vh;
 }
 
 .header {
@@ -282,7 +281,6 @@ body {
 }
 
 #lessonFrame {
-  overflow: hidden;
   border: none;
   height: calc(100vh - 200px);
 }
@@ -368,7 +366,6 @@ body {
   background: rgb(44.1329113924, 91.75, 139.3670886076);
 }
 
-/* === ВАШ СУЩЕСТВУЮЩИЙ КОД для боковой панели === */
 .sidebar-panel {
   position: fixed;
   left: 0;
@@ -395,7 +392,31 @@ body {
   font-size: 1.5rem;
 }
 
-.container.sidebar-open {
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.feature-card {
+  flex: 1 1 300px; /* Flexbox: адаптивные карточки */
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.feature-card .container {
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
+  overflow: hidden;
+  max-width: none;
+  margin-right: 0;
+  padding-right: 0;
+}
+.feature-card .container.sidebar-open {
   margin-left: 300px;
   margin-right: 0;
 }
@@ -404,59 +425,23 @@ body {
   padding: 20px;
 }
 
-#contentTitle {
-  margin-bottom: 20px;
+h3 {
   color: #2c3e50;
-}
-
-.content-card {
-  background: #1e1e1e;
-  border: 1px solid #3e3e42;
-  border-radius: 8px;
-  padding: 25px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-.content-card h3 {
-  color: #d4d4d4;
-  border-bottom: 2px solid #569cd6;
-  padding-bottom: 10px;
   margin-bottom: 20px;
 }
-.content-card p {
-  color: #b0b0b0;
-  line-height: 1.6;
-}
 
-.code-example {
-  margin-top: 20px;
-  background: rgb(24.9, 24.9, 24.9);
-  border: 1px solid #3e3e42;
-  border-radius: 6px;
-  padding: 15px;
+ul {
+  margin: 15px 0;
+  padding-left: 20px;
 }
-.code-example h4 {
-  margin-top: 0;
-  color: #4fc1ff;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-.code-example pre {
-  margin: 0;
-  overflow-x: auto;
-}
-.code-example pre code {
-  font-family: "Consolas", "Monaco", "Courier New", monospace;
-  font-size: 14px;
-  color: #d4d4d4;
-  line-height: 1.5;
+ul li {
+  margin-bottom: 10px;
 }
 
 .actions {
   display: flex;
   gap: 10px;
   margin-top: 20px;
-  flex-direction: column;
 }
 .actions button {
   padding: 8px 16px;
@@ -481,25 +466,14 @@ body {
   box-shadow: 0 4px 12px rgba(78, 201, 176, 0.3);
 }
 
-.welcome-card {
-  background: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  padding: 30px;
-  margin: 20px 0;
+@media (max-width: 768px) {
+  .category {
+    flex: 1 1 100%;
+  }
+  .item-btn {
+    flex: 1 1 120px;
+  }
 }
-.welcome-card h3 {
-  color: #2c3e50;
-  margin-bottom: 20px;
-}
-.welcome-card ul {
-  margin: 15px 0;
-  padding-left: 20px;
-}
-.welcome-card ul li {
-  margin-bottom: 10px;
-}
-
 @media (max-width: 768px) {
   .sidebar-panel {
     width: 100%;
@@ -515,7 +489,9 @@ body {
   .container.sidebar-open {
     margin-left: 0;
   }
- 
+  .actions {
+    flex-direction: column;
+  }
   .actions button {
     width: 100%;
   }
@@ -529,4 +505,4 @@ body {
   }
 }
 
-
+/*# sourceMappingURL=library.css.map */
