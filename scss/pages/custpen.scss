@@ -1,27 +1,19 @@
-// ===== Colors (VS Code vibe) =====
 $bg: #f3f6f8;
-
 $panel: #1e1e1e;
 $panelHead: #2d2d2d;
 $border: #333;
-
 $text: #ffffff;
 $textGray: #9aa0a6;
-
 $htmlColor: #e34c26;
 $cssColor: #264de4;
 $jsColor: #f0db4f;
-
 $btnSave: #28a745;
 $btnHistory: #6c757d;
-
 $modalBg: rgba(0, 0, 0, 0.6);
 $modalWindow: #2a2a2a;
 $modalHead: #3a3a3a;
-
 $radius: 10px;
 
-// ===== Panels layout (GRID adaptive) =====
 .panels {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -33,7 +25,6 @@ $radius: 10px;
   }
 }
 
-// ===== Panel =====
 .panel {
   background: $panel;
   border-radius: $radius;
@@ -71,7 +62,6 @@ $radius: 10px;
   }
 }
 
-// ===== Code area =====
 .code-wrapper {
   display: flex;
   width: 100%;
@@ -113,7 +103,6 @@ $radius: 10px;
   tab-size: 2;
 }
 
-// ===== Buttons under panels =====
 .editor-actions {
   display: flex;
   gap: 12px;
@@ -157,7 +146,6 @@ $radius: 10px;
   }
 }
 
-// ===== Preview =====
 .preview-section {
   background: #fff;
   border-radius: $radius;
@@ -259,7 +247,6 @@ $radius: 10px;
   overflow: auto;
 }
 
-// ===== History items (inside modal) =====
 .history-item {
   background: #333;
   border-radius: 8px;
