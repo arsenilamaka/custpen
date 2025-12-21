@@ -1,54 +1,51 @@
-@charset "UTF-8";
 .panels {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
+}
+@media (max-width: 1024px) {
+  .panels {
+    grid-template-columns: 1fr;
+  }
 }
 
 .panel {
   background: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
-  flex: 1;
-  min-width: 0;
+  border: 1px solid #333;
 }
-
-.head {
+.panel .head {
   display: flex;
   align-items: center;
+  gap: 10px;
   padding: 12px 15px;
   background: #2d2d2d;
   border-bottom: 1px solid #333;
 }
-
-.dot {
+.panel .head .dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  margin-right: 10px;
 }
-
-.dot.html {
+.panel .head .dot.html {
   background: #e34c26;
 }
-
-.dot.css {
+.panel .head .dot.css {
   background: #264de4;
 }
-
-.dot.js {
+.panel .head .dot.js {
   background: #f0db4f;
 }
-
-.title {
-  font-weight: bold;
-  color: #fff;
+.panel .head .title {
+  font-weight: 700;
   font-size: 14px;
+  color: #ffffff;
 }
-
-.content {
+.panel .content {
+  height: 260px;
   background: #1e1e1e;
-  height: 250px;
 }
 
 .code-wrapper {
@@ -58,64 +55,102 @@
 }
 
 .line-numbers {
+  width: 52px;
+  min-width: 52px;
+  padding: 10px 8px;
+  text-align: right;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   background: #1e1e1e;
-  color: #858585;
+  border-right: 1px solid #333;
+  color: #9aa0a6;
   font-family: "Consolas", "Monaco", monospace;
   font-size: 13px;
-  text-align: right;
-  padding: 10px 8px;
-  width: 50px;
-  min-width: 50px;
   line-height: 1.5;
-  border-right: 1px solid #333;
-  overflow: hidden;
-  user-select: none;
 }
 
 .code-editor {
   width: 100%;
   height: 100%;
-  background: #1e1e1e;
-  border: none;
-  color: #d4d4d4;
-  font-family: "Consolas", "Monaco", monospace;
-  font-size: 13px;
-  line-height: 1.5;
-  padding: 10px;
+  border: 0;
+  outline: 0;
   resize: none;
-  outline: none;
-  white-space: pre;
+  padding: 10px;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
   overflow: auto;
-}
-.code-editor:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-/* предпросмотр */
-.preview-section {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  -moz-tab-size: 2;
+    -o-tab-size: 2;
+       tab-size: 2;
 }
 
-.preview-header {
+.editor-actions {
   display: flex;
-  justify-content: center;
+  gap: 12px;
   align-items: center;
+  margin: 12px 0 16px;
+}
+@media (max-width: 480px) {
+  .editor-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.save-btn,
+.history-btn {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@media (max-width: 480px) {
+  .save-btn,
+  .history-btn {
+    width: 100%;
+  }
+}
+
+.save-btn {
+  background: #28a745;
+}
+.save-btn:hover {
+  background: rgb(32.115942029, 134.084057971, 55.4);
+}
+
+.history-btn {
+  background: #6c757d;
+}
+.history-btn:hover {
+  background: rgb(89.0884120172, 96.5124463519, 103.1115879828);
+}
+
+.preview-section {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e1e5ea;
+}
+.preview-section .preview-header {
   padding: 12px 20px;
-  background: #f8f9fa;
-  border-bottom: 1px solid #dee2e6;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e1e5ea;
+  text-align: center;
 }
-
-.preview-title {
-  font-weight: bold;
-  color: #333;
-  font-size: 16px;
+.preview-section .preview-header .preview-title {
+  font-weight: 700;
+  color: #222;
+  font-size: 15px;
 }
-
-.preview-content {
+.preview-section .preview-content {
   height: 350px;
 }
 
@@ -123,7 +158,124 @@
   width: 100%;
   height: 100%;
   border: none;
-  background: white;
 }
 
-/*# sourceMappingURL=custpen.css.map */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+.modal.show {
+  display: block;
+}
+
+.modal-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-window {
+  position: relative;
+  width: 900px;
+  max-width: calc(100% - 24px);
+  margin: 24px auto;
+  background: #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #333;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 480px) {
+  .modal-window {
+    margin: 12px auto;
+  }
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #3a3a3a;
+  border-bottom: 1px solid #333;
+}
+.modal-head .modal-title {
+  font-weight: 700;
+  font-size: 15px;
+}
+.modal-head button {
+  background: transparent;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.modal-head button:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.modal-body {
+  padding: 14px 16px;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.history-item {
+  background: #333;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-left: 3px solid #e34c26;
+}
+.history-item .history-item-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.history-item .history-item-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+}
+.history-item .history-item-date {
+  font-size: 12px;
+  color: #9aa0a6;
+  white-space: nowrap;
+}
+.history-item .history-item-preview {
+  font-size: 12px;
+  color: #9aa0a6;
+  font-family: monospace;
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+.history-item .history-item-actions {
+  display: flex;
+  gap: 10px;
+}
+.history-item .history-item-actions button {
+  border: 0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #fff;
+}
+.history-item .history-item-actions .btn-load {
+  background: #007bff;
+}
+.history-item .history-item-actions .btn-load:hover {
+  background: rgb(0, 103.32, 214.2);
+}
+.history-item .history-item-actions .btn-delete {
+  background: #dc3545;
+}
+.history-item .history-item-actions .btn-delete:hover {
+  background: rgb(197.9088607595, 34.2911392405, 49.9670886076);
+}

@@ -18,6 +18,9 @@
   --border: #2c3e50;
 }
 
+.element {
+  border: 1px solid;
+}
 .theme-light .element {
   color: #2c3e50;
 }
@@ -29,9 +32,6 @@
 }
 .theme-dark .element {
   background-color: #121212;
-}
-.element {
-  border: 1px solid;
 }
 .theme-light .element {
   border-color: #ecf0f1;
@@ -92,6 +92,9 @@ input, button, textarea, select {
   --border: #2c3e50;
 }
 
+.element {
+  border: 1px solid;
+}
 .theme-light .element {
   color: #2c3e50;
 }
@@ -103,9 +106,6 @@ input, button, textarea, select {
 }
 .theme-dark .element {
   background-color: #121212;
-}
-.element {
-  border: 1px solid;
 }
 .theme-light .element {
   border-color: #ecf0f1;
@@ -204,6 +204,9 @@ body {
   --border: #2c3e50;
 }
 
+.element {
+  border: 1px solid;
+}
 .theme-light .element {
   color: #2c3e50;
 }
@@ -215,9 +218,6 @@ body {
 }
 .theme-dark .element {
   background-color: #121212;
-}
-.element {
-  border: 1px solid;
 }
 .theme-light .element {
   border-color: #ecf0f1;
@@ -258,5 +258,3 @@ body {
 .feature-card:hover {
   transform: translateY(-5px);
 }
-
-/*# sourceMappingURL=projects.css.map */
