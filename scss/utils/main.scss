@@ -17,13 +17,13 @@ body {
     
     h1 {
         color: $primary-color;
-        margin-bottom: $spacing-sm;
     }
 }
 
 .nav {
     align-items: center;
     display: flex;
+    align-items: center;
     gap: $spacing-md;
     
     &-link {
@@ -31,7 +31,7 @@ body {
         text-decoration: none;
         padding: $spacing-xs $spacing-sm;
         border-radius: 4px;
-                
+                 
         &:hover {
             background: $primary-color;
             color: $white;
@@ -41,7 +41,7 @@ body {
 }
 .toogle-switch {
     position: relative;
-    margin-top: 10px;
+    // margin-top: 10px;
     height: 40px;
     width: 80px;
     border-radius: 20px;

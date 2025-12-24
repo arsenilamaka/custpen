@@ -102,12 +102,12 @@ body {
 }
 .header h1 {
   color: #3498db;
-  margin-bottom: 16px;
 }
 
 .nav {
   align-items: center;
   display: flex;
+  align-items: center;
   gap: 24px;
 }
 .nav-link {
@@ -123,7 +123,6 @@ body {
 
 .toogle-switch {
   position: relative;
-  margin-top: 10px;
   height: 40px;
   width: 80px;
   border-radius: 20px;
