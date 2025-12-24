@@ -1,3 +1,6 @@
+@import '../utils/reset.scss';
+@import '../utils/constanta.scss';
+
 // Переменные
 $bg-dark: #1e1e1e;
 $bg-panel: #1e1e1e;
@@ -147,3 +150,4 @@ $preview-header-bg: #f8f9fa;
   border: none;
   background: $preview-bg;
 }
+
