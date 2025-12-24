@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded and parsed');
     
     initApp();
+    changeTopic()
 });
 
 function initApp() {
@@ -31,3 +32,13 @@ window.CUSTPEN = {
     initApp,
     showMessage
 };
+
+
+function changeTopic(){
+    const themeButton = document.getElementById('theme-toggle');
+
+    themeButton.addEventListener('change', function() {
+        document.body.classList.toggle('dark-theme');
+        console.log("функция закончена")
+    });
+} 

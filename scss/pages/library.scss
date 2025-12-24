@@ -1,5 +1,5 @@
-@import "../utils/main.scss";
-@import "../utils/constanta.scss";
+@import '../utils/reset.scss';
+@import '../utils/constanta.scss';
 
 // ===== VS CODE ТЕМА ТОЛЬКО ДЛЯ БИБЛИОТЕКИ =====
 
@@ -247,6 +247,8 @@ $library-category-tools: $library-vscode-green;
         }
     }
 }
+
+
 // ===== АДАПТИВНОСТЬ =====
 
 @media (max-width: 768px) {
