@@ -1,4 +1,6 @@
 @charset "UTF-8";
+<<<<<<< HEAD
+=======
 /* Reset and base styles */
 * {
   margin: 0;
@@ -87,6 +89,7 @@ input, button, textarea, select {
   border-color: var(--border);
 }
 
+>>>>>>> 83a32183f9b526926fae757a657e718d1d741ddc
 .panels {
   display: flex;
   gap: 15px;
