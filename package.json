@@ -12,5 +12,19 @@
   "devDependencies": {
     "sass": "^1.77.2",
     "rimraf": "^5.0.5"
-  }
+  },
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arsenilamaka/custpen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/arsenilamaka/custpen/issues"
+  },
+  "homepage": "https://github.com/arsenilamaka/custpen#readme"
 }

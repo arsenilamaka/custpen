@@ -1,6 +1,10 @@
+.main-grid{
+  padding:90px 30px;
+}
+
 .panels {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+  display: flex;
   gap: 15px;
   margin-bottom: 14px;
 }
