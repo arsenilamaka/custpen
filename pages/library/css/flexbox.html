@@ -1,737 +1,873 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flexbox</title>
- <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ УРОКА FLEXBOX ===== */
-        
-        /* Сброс и базовые стили */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #f0f0f0;
-            min-height: 100vh;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        
-        /* Контейнер урока */
-        .lesson-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 10px;
-        }
-        
-        /* Шапка урока */
-        .lesson-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        h1 {
-            color: #64ffda;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            text-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
-            font-weight: 700;
-        }
-        
-        /* Теги уровня сложности */
-        .tag {
-            display: inline-block;
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin: 0 8px 15px 0;
-            transition: transform 0.2s ease;
-        }
-        
-        .tag:hover {
-            transform: translateY(-2px);
-        }
-        
-        .tag-basic {
-            background: linear-gradient(135deg, #4CAF50, #2E7D32);
-            color: white;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-        }
-        
-        .tag-advanced {
-            background: linear-gradient(135deg, #FF9800, #F57C00);
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
-        }
-        
-        .lesson-description {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.7;
-            color: #b0b0b0;
-        }
-        
-        /* Сетка контента */
+    <style>
+      /* ===== ОСНОВНЫЕ СТИЛИ УРОКА FLEXBOX ===== */
+
+      /* Сброс и базовые стили */
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: #f0f0f0;
+        min-height: 100vh;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      /* Контейнер урока */
+      .lesson-container {
+        margin: 0 auto;
+        padding: 10px;
+      }
+
+      /* Шапка урока */
+      .lesson-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        color: #64ffda;
+        font-size: 2.8rem;
+        margin-bottom: 15px;
+        text-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+        font-weight: 700;
+      }
+
+      /* Теги уровня сложности */
+      .tag {
+        display: inline-block;
+        padding: 8px 18px;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 0 8px 15px 0;
+        transition: transform 0.2s ease;
+      }
+
+      .tag:hover {
+        transform: translateY(-2px);
+      }
+
+      .tag-basic {
+        background: linear-gradient(135deg, #4caf50, #2e7d32);
+        color: white;
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+      }
+      .tag-basic:hover {
+        transform: translateY(-5px);
+        border-color: #64ffda;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      } 
+
+      .tag-advanced {
+        background: linear-gradient(135deg, #ff9800, #f57c00);
+        color: white;
+        box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+      }
+      .tag-advanced:hover {
+        transform: translateY(-5px);
+        border-color: #64ffda;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      .lesson-description {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.7;
+        color: #b0b0b0;
+      }
+
+      /* Сетка контента */
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+        margin-bottom: 50px;
+      }
+
+      @media (max-width: 900px) {
         .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-            margin-bottom: 50px;
+          grid-template-columns: 1fr;
+          gap: 25px;
         }
-        
-        @media (max-width: 900px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
+      }
+
+      /* Секции урока */
+      .lesson-section {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+      /* ховер для блоков */
+      /* .lesson-section:hover {
+        transform: translateY(-5px);
+        border-color: #64ffda;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      } */
+
+      h2 {
+        color: #64ffda;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid rgba(100, 255, 218, 0.3);
+        font-size: 1.9rem;
+        font-weight: 600;
+      }
+
+      /* Свойства Flexbox */
+      .flex-property {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 12px;
+        border-left: 5px solid #2196f3;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      /* hover для блоков */
+      /* .flex-property:hover {
+        background: rgba(33, 150, 243, 0.15);
+        transform: translateX(8px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      } */
+
+      .property-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .property-name {
+        font-weight: 700;
+        color: #2196f3;
+        font-size: 1.25rem;
+        text-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+      }
+
+      .property-desc {
+        color: #d0d0d0;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        font-size: 1.05rem;
+      }
+
+      /* Код */
+      code {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 8px 15px;
+        border-radius: 8px;
+        color: #ff9800;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        display: inline-block;
+        margin: 8px 0;
+        font-size: 1.1rem;
+        border: 1px solid rgba(255, 152, 0, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Демонстрационные блоки */
+      .demo-container {
+        margin-top: 25px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 12px;
+        padding: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .flex-demo-box {
+        background: rgba(100, 255, 218, 0.1);
+        border: 2px solid #64ffda;
+        border-radius: 10px;
+        padding: 25px;
+        margin: 15px 0;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        min-height: 150px;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .demo-item {
+        background: linear-gradient(135deg, #2196f3, #1976d2);
+        color: white;
+        padding: 25px;
+        border-radius: 10px;
+        text-align: center;
+        min-width: 90px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 15px rgba(33, 150, 243, 0.3);
+        cursor: pointer;
+      }
+
+      .demo-item:hover {
+        transform: scale(1.08) translateY(-3px);
+        box-shadow: 0 10px 25px rgba(33, 150, 243, 0.5);
+      }
+
+      /* Контролы и кнопки */
+      .demo-controls {
+        margin-top: 25px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .lesson-button {
+        background: linear-gradient(135deg, #2196f3, #1976d2);
+        color: white;
+        border: none;
+        padding: 14px 28px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 15px rgba(33, 150, 243, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .lesson-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(33, 150, 243, 0.5);
+      }
+
+      .lesson-button:active {
+        transform: translateY(-1px);
+      }
+
+      /* Примеры кода */
+      .code-example {
+        margin-top: 35px;
+        background: #1e1e1e;
+        border-radius: 12px;
+        padding: 25px;
+        border-left: 6px solid #ff9800;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .code-example h4 {
+        color: #ff9800;
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+        font-weight: 600;
+      }
+
+      .code-block {
+        overflow-x: auto;
+        padding: 20px;
+        background: #0d0d0d;
+        border-radius: 10px;
+        border: 1px solid #333;
+        font-family: "Consolas", "Monaco", "Courier New", monospace;
+        font-size: 1rem;
+        line-height: 1.5;
+        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Интерактивная демонстрация */
+      .interactive-demo {
+        margin-top: 45px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 30px;
+        border: 1px solid rgba(100, 255, 218, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .interactive-demo h3 {
+        color: #64ffda;
+        margin-bottom: 25px;
+        font-size: 1.6rem;
+      }
+
+      .slider-container {
+        margin: 25px 0;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .slider-container label {
+        display: block;
+        margin-bottom: 12px;
+        color: #64ffda;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        height: 10px;
+        margin-bottom: 15px;
+        -webkit-appearance: none;
+        background: rgba(100, 255, 218, 0.1);
+        border-radius: 5px;
+        outline: none;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(135deg, #2196f3, #1976d2);
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(33, 150, 243, 0.5);
+      }
+
+      .value-display {
+        text-align: center;
+        font-weight: 700;
+        color: #2196f3;
+        margin-top: 8px;
+        font-size: 1.2rem;
+        text-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+      }
+
+      /* Прогресс изучения */
+      .progress-container {
+        margin-top: 30px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 10px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4caf50, #64ffda);
+        border-radius: 10px;
+        width: 0%;
+        transition: width 1s ease;
+      }
+
+      /* Футер урока */
+      .lesson-footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 25px;
+        color: #888;
+        font-size: 0.95rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+      }
+
+      /* Адаптивность для мобильных */
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
         }
-        
-        /* Секции урока */
-        .lesson-section {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+        h1 {
+          font-size: 2.2rem;
         }
-        
-        .lesson-section:hover {
-            transform: translateY(-5px);
-            border-color: #64ffda;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-        
+
         h2 {
-            color: #64ffda;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(100, 255, 218, 0.3);
-            font-size: 1.9rem;
-            font-weight: 600;
+          font-size: 1.6rem;
         }
-        
-        /* Свойства Flexbox */
+
+        .lesson-section {
+          padding: 20px;
+          max-width: 100%;
+        }
+
         .flex-property {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 12px;
-            border-left: 5px solid #2196F3;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          padding: 15px;
         }
-        
-        .flex-property:hover {
-            background: rgba(33, 150, 243, 0.15);
-            transform: translateX(8px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .property-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .property-name {
-            font-weight: 700;
-            color: #2196F3;
-            font-size: 1.25rem;
-            text-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
-        }
-        
-        .property-desc {
-            color: #d0d0d0;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
-        
-        /* Код */
-        code {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 8px 15px;
-            border-radius: 8px;
-            color: #FF9800;
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            display: inline-block;
-            margin: 8px 0;
-            font-size: 1.1rem;
-            border: 1px solid rgba(255, 152, 0, 0.2);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Демонстрационные блоки */
-        .demo-container {
-            margin-top: 25px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 12px;
-            padding: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        .flex-demo-box {
-            background: rgba(100, 255, 218, 0.1);
-            border: 2px solid #64ffda;
-            border-radius: 10px;
-            padding: 25px;
-            margin: 15px 0;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            min-height: 150px;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
+
         .demo-item {
-            background: linear-gradient(135deg, #2196F3, #1976D2);
-            color: white;
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            min-width: 90px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 15px rgba(33, 150, 243, 0.3);
-            cursor: pointer;
+          padding: 20px;
+          min-width: 70px;
         }
-        
-        .demo-item:hover {
-            transform: scale(1.08) translateY(-3px);
-            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.5);
-        }
-        
-        /* Контролы и кнопки */
-        .demo-controls {
-            margin-top: 25px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
+
         .lesson-button {
-            background: linear-gradient(135deg, #2196F3, #1976D2);
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(33, 150, 243, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+          padding: 12px 20px;
+          font-size: 0.95rem;
         }
-        
-        .lesson-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.5);
+
+        .tag {
+          padding: 6px 15px;
+          font-size: 0.9rem;
         }
-        
-        .lesson-button:active {
-            transform: translateY(-1px);
-        }
-        
-        /* Примеры кода */
-        .code-example {
-            margin-top: 35px;
-            background: #1e1e1e;
-            border-radius: 12px;
-            padding: 25px;
-            border-left: 6px solid #FF9800;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .code-example h4 {
-            color: #FF9800;
-            margin-bottom: 20px;
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
-        
-        .code-block {
-            overflow-x: auto;
-            padding: 20px;
-            background: #0d0d0d;
-            border-radius: 10px;
-            border: 1px solid #333;
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            font-size: 1rem;
-            line-height: 1.5;
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-        
-        /* Интерактивная демонстрация */
-        .interactive-demo {
-            margin-top: 45px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 30px;
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .interactive-demo h3 {
-            color: #64ffda;
-            margin-bottom: 25px;
-            font-size: 1.6rem;
-        }
-        
+      }
+
+      /* Печать */
+      @media print {
+        .demo-controls,
+        .interactive-demo,
+        .lesson-button,
+        .progress-container,
+        input[type="range"],
         .slider-container {
-            margin: 25px 0;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+          display: none !important;
         }
-        
-        .slider-container label {
-            display: block;
-            margin-bottom: 12px;
-            color: #64ffda;
-            font-weight: 600;
-            font-size: 1.1rem;
+
+        .lesson-container {
+          max-width: 100%;
+          padding: 0;
         }
-        
-        input[type="range"] {
-            width: 100%;
-            height: 10px;
-            margin-bottom: 15px;
-            -webkit-appearance: none;
-            background: rgba(100, 255, 218, 0.1);
-            border-radius: 5px;
-            outline: none;
+
+        body {
+          background: white !important;
+          color: black !important;
+          padding: 10px;
         }
-        
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #2196F3, #1976D2);
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(33, 150, 243, 0.5);
+
+        code {
+          background: #f5f5f5 !important;
+          color: #333 !important;
+          border: 1px solid #ddd !important;
         }
-        
-        .value-display {
-            text-align: center;
-            font-weight: 700;
-            color: #2196F3;
-            margin-top: 8px;
-            font-size: 1.2rem;
-            text-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+
+        .lesson-section {
+          box-shadow: none !important;
+          border: 1px solid #ddd !important;
         }
-        
-        /* Прогресс изучения */
-        .progress-container {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Анимации */
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4);
         }
-        
-        .progress-bar {
-            width: 100%;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 10px;
+        70% {
+          box-shadow: 0 0 0 10px rgba(100, 255, 218, 0);
         }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4CAF50, #64ffda);
-            border-radius: 10px;
-            width: 0%;
-            transition: width 1s ease;
+        100% {
+          box-shadow: 0 0 0 0 rgba(100, 255, 218, 0);
         }
-        
-        /* Футер урока */
-        .lesson-footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 25px;
-            color: #888;
-            font-size: 0.95rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-        }
-        
-        /* Адаптивность для мобильных */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.6rem;
-            }
-            
-            .lesson-section {
-                padding: 20px;
-            }
-            
-            .flex-property {
-                padding: 15px;
-            }
-            
-            .demo-item {
-                padding: 20px;
-                min-width: 70px;
-            }
-            
-            .lesson-button {
-                padding: 12px 20px;
-                font-size: 0.95rem;
-            }
-            
-            .tag {
-                padding: 6px 15px;
-                font-size: 0.9rem;
-            }
-        }
-        
-        /* Печать */
-        @media print {
-            .demo-controls,
-            .interactive-demo,
-            .lesson-button,
-            .progress-container,
-            input[type="range"],
-            .slider-container {
-                display: none !important;
-            }
-            
-            .lesson-container {
-                max-width: 100%;
-                padding: 0;
-            }
-            
-            body {
-                background: white !important;
-                color: black !important;
-                padding: 10px;
-            }
-            
-            code {
-                background: #f5f5f5 !important;
-                color: #333 !important;
-                border: 1px solid #ddd !important;
-            }
-            
-            .lesson-section {
-                box-shadow: none !important;
-                border: 1px solid #ddd !important;
-            }
-        }
-        
-        /* Анимации */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(100, 255, 218, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
-        }
-        
-        .highlight {
-            animation: pulse 2s infinite;
-        }
+      }
+
+      .highlight {
+        animation: pulse 2s infinite;
+      }
     </style>
-</head>
-<body class="lesson-page">
+  </head>
+  <body class="lesson-page">
     <div class="lesson-container">
-        <!-- ШАПКА УРОКА -->
-        <header class="lesson-header">
-            <h1>Flexbox Свойства</h1>
-            <div class="lesson-tags">
-                <span class="tag tag-basic">Базовый</span>
-                <span class="tag tag-advanced">Продвинутый</span>
+      <header class="lesson-header">
+        <h1>Flexbox Свойства</h1>
+        <div class="lesson-tags">
+          <span class="tag tag-basic">Базовый</span>
+          <span class="tag tag-advanced">Продвинутый</span>
+        </div>
+        <p class="lesson-description">
+          Полное руководство по CSS Flexbox с интерактивными примерами. Изучите
+          свойства контейнера и элементов на практике.
+        </p>
+      </header>
+
+      <!-- ОСНОВНОЙ КОНТЕНТ -->
+      <div class="content-grid">
+        <!-- ЛЕВАЯ КОЛОНКА: СВОЙСТВА КОНТЕЙНЕРА -->
+        <section class="lesson-section">
+          <h2>Контейнер</h2>
+
+          <!-- display: flex -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">display: flex</span>
+              <span class="tag tag-basic">Базовый</span>
             </div>
-            <p class="lesson-description">
-                Полное руководство по CSS Flexbox с интерактивными примерами. 
-                Изучите свойства контейнера и элементов на практике.
+            <p class="property-desc">
+              Создает flex-контейнер. Базовое свойство, которое превращает любой
+              элемент во flex-контейнер.
             </p>
-        </header>
+            <code>display: flex;</code>
 
-        <!-- ОСНОВНОЙ КОНТЕНТ -->
-        <div class="content-grid">
-            
-            <!-- ЛЕВАЯ КОЛОНКА: СВОЙСТВА КОНТЕЙНЕРА -->
-            <section class="lesson-section">
-                <h2>Контейнер</h2>
-                
-                <!-- display: flex -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">display: flex</span>
-                        <span class="tag tag-basic">Базовый</span>
-                    </div>
-                    <p class="property-desc">Создает flex-контейнер. Базовое свойство, которое превращает любой элемент во flex-контейнер.</p>
-                    <code>display: flex;</code>
-                    
-                    <div class="demo-container">
-                        <div class="flex-demo-box" style="display: flex;">
-                            <div class="demo-item">1</div>
-                            <div class="demo-item">2</div>
-                            <div class="demo-item">3</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="demo-container">
+              <div class="flex-demo-box" style="display: flex">
+                <div class="demo-item">1</div>
+                <div class="demo-item">2</div>
+                <div class="demo-item">3</div>
+              </div>
+            </div>
+          </div>
 
-                <!-- flex-direction -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">flex-direction</span>
-                        <span class="tag tag-basic">Базовый</span>
-                    </div>
-                    <p class="property-desc">Определяет направление основной оси. Значения: row (строка), column (колонка), row-reverse, column-reverse.</p>
-                    <code>flex-direction: row;</code>
-                    
-                    <div class="demo-container">
-                        <div class="flex-demo-box" style="flex-direction: row;" id="directionDemo">
-                            <div class="demo-item">1</div>
-                            <div class="demo-item">2</div>
-                            <div class="demo-item">3</div>
-                        </div>
-                        <div class="demo-controls">
-                            <button class="lesson-button" onclick="changeDirection('row')">→ Row</button>
-                            <button class="lesson-button" onclick="changeDirection('column')">↓ Column</button>
-                            <button class="lesson-button" onclick="changeDirection('row-reverse')">← Row Reverse</button>
-                            <button class="lesson-button" onclick="changeDirection('column-reverse')">↑ Column Reverse</button>
-                        </div>
-                    </div>
-                </div>
+          <!-- flex-direction -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">flex-direction</span>
+              <span class="tag tag-basic">Базовый</span>
+            </div>
+            <p class="property-desc">
+              Определяет направление основной оси. Значения: row (строка),
+              column (колонка), row-reverse, column-reverse.
+            </p>
+            <code>flex-direction: row;</code>
 
-                <!-- justify-content -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">justify-content</span>
-                        <span class="tag tag-basic">Базовый</span>
-                    </div>
-                    <p class="property-desc">Выравнивание элементов по главной оси. Контролирует распределение пространства между и вокруг элементов.</p>
-                    <code>justify-content: center;</code>
-                    
-                    <div class="demo-container">
-                        <div class="flex-demo-box" style="justify-content: center;" id="justifyDemo">
-                            <div class="demo-item">1</div>
-                            <div class="demo-item">2</div>
-                            <div class="demo-item">3</div>
-                        </div>
-                        <div class="demo-controls">
-                            <button class="lesson-button" onclick="changeJustify('flex-start')">Flex Start</button>
-                            <button class="lesson-button" onclick="changeJustify('center')">Center</button>
-                            <button class="lesson-button" onclick="changeJustify('flex-end')">Flex End</button>
-                            <button class="lesson-button" onclick="changeJustify('space-between')">Space Between</button>
-                            <button class="lesson-button" onclick="changeJustify('space-around')">Space Around</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="demo-container">
+              <div
+                class="flex-demo-box"
+                style="flex-direction: row"
+                id="directionDemo"
+              >
+                <div class="demo-item">1</div>
+                <div class="demo-item">2</div>
+                <div class="demo-item">3</div>
+              </div>
+              <div class="demo-controls">
+                <button class="lesson-button" onclick="changeDirection('row')">
+                  → Row
+                </button>
+                <button
+                  class="lesson-button"
+                  onclick="changeDirection('column')"
+                >
+                  ↓ Column
+                </button>
+                <button
+                  class="lesson-button"
+                  onclick="changeDirection('row-reverse')"
+                >
+                  ← Row Reverse
+                </button>
+                <button
+                  class="lesson-button"
+                  onclick="changeDirection('column-reverse')"
+                >
+                  ↑ Column Reverse
+                </button>
+              </div>
+            </div>
+          </div>
 
-                <!-- align-items -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">align-items</span>
-                        <span class="tag tag-basic">Базовый</span>
-                    </div>
-                    <p class="property-desc">Выравнивание элементов по поперечной оси. Определяет как элементы располагаются перпендикулярно основной оси.</p>
-                    <code>align-items: stretch;</code>
-                    
-                    <div class="demo-container">
-                        <div class="flex-demo-box" style="height: 200px; align-items: stretch;" id="alignDemo">
-                            <div class="demo-item" style="min-height: 50px;">1</div>
-                            <div class="demo-item" style="min-height: 80px;">2</div>
-                            <div class="demo-item" style="min-height: 30px;">3</div>
-                        </div>
-                        <div class="demo-controls">
-                            <button class="lesson-button" onclick="changeAlign('stretch')">Stretch</button>
-                            <button class="lesson-button" onclick="changeAlign('center')">Center</button>
-                            <button class="lesson-button" onclick="changeAlign('flex-start')">Flex Start</button>
-                            <button class="lesson-button" onclick="changeAlign('flex-end')">Flex End</button>
-                        </div>
-                    </div>
-                </div>
+          <!-- justify-content -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">justify-content</span>
+              <span class="tag tag-basic">Базовый</span>
+            </div>
+            <p class="property-desc">
+              Выравнивание элементов по главной оси. Контролирует распределение
+              пространства между и вокруг элементов.
+            </p>
+            <code>justify-content: center;</code>
 
-                <!-- Остальные свойства контейнера -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">flex-wrap</span>
-                        <span class="tag tag-advanced">Продвинутый</span>
-                    </div>
-                    <p class="property-desc">Определяет, могут ли элементы переноситься на новую строку. Значения: nowrap (по умолчанию), wrap, wrap-reverse.</p>
-                    <code>flex-wrap: wrap;</code>
-                    <div class="demo-container">
-                        <div class="flex-demo-box" style="flex-wrap: wrap; width: 300px;">
-                            <div class="demo-item" style="width: 150px;">Широкий 1</div>
-                            <div class="demo-item" style="width: 150px;">Широкий 2</div>
-                            <div class="demo-item" style="width: 150px;">Широкий 3</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="demo-container">
+              <div
+                class="flex-demo-box"
+                style="justify-content: center"
+                id="justifyDemo"
+              >
+                <div class="demo-item">1</div>
+                <div class="demo-item">2</div>
+                <div class="demo-item">3</div>
+              </div>
+              <div class="demo-controls">
+                <button
+                  class="lesson-button"
+                  onclick="changeJustify('flex-start')"
+                >
+                  Flex Start
+                </button>
+                <button class="lesson-button" onclick="changeJustify('center')">
+                  Center
+                </button>
+                <button
+                  class="lesson-button"
+                  onclick="changeJustify('flex-end')"
+                >
+                  Flex End
+                </button>
+                <button
+                  class="lesson-button"
+                  onclick="changeJustify('space-between')"
+                >
+                  Space Between
+                </button>
+                <button
+                  class="lesson-button"
+                  onclick="changeJustify('space-around')"
+                >
+                  Space Around
+                </button>
+              </div>
+            </div>
+          </div>
 
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">align-content</span>
-                        <span class="tag tag-advanced">Продвинутый</span>
-                    </div>
-                    <p class="property-desc">Выравнивание строк в многострочном контейнере. Работает только когда есть несколько строк.</p>
-                    <code>align-content: space-between;</code>
-                </div>
+          <!-- align-items -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">align-items</span>
+              <span class="tag tag-basic">Базовый</span>
+            </div>
+            <p class="property-desc">
+              Выравнивание элементов по поперечной оси. Определяет как элементы
+              располагаются перпендикулярно основной оси.
+            </p>
+            <code>align-items: stretch;</code>
 
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">gap</span>
-                        <span class="tag tag-advanced">Продвинутый</span>
-                    </div>
-                    <p class="property-desc">Расстояние между элементами. Можно задать отдельно для строк и колонок: gap: 10px 20px;</p>
-                    <code>gap: 20px;</code>
-                </div>
-            </section>
+            <div class="demo-container">
+              <div
+                class="flex-demo-box"
+                style="height: 200px; align-items: stretch"
+                id="alignDemo"
+              >
+                <div class="demo-item" style="min-height: 50px">1</div>
+                <div class="demo-item" style="min-height: 80px">2</div>
+                <div class="demo-item" style="min-height: 30px">3</div>
+              </div>
+              <div class="demo-controls">
+                <button class="lesson-button" onclick="changeAlign('stretch')">
+                  Stretch
+                </button>
+                <button class="lesson-button" onclick="changeAlign('center')">
+                  Center
+                </button>
+                <button
+                  class="lesson-button"
+                  onclick="changeAlign('flex-start')"
+                >
+                  Flex Start
+                </button>
+                <button class="lesson-button" onclick="changeAlign('flex-end')">
+                  Flex End
+                </button>
+              </div>
+            </div>
+          </div>
 
-            <!-- ПРАВАЯ КОЛОНКА: СВОЙСТВА ЭЛЕМЕНТОВ -->
-            <section class="lesson-section">
-                <h2>Элементы</h2>
+          <!-- Остальные свойства контейнера -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">flex-wrap</span>
+              <span class="tag tag-advanced">Продвинутый</span>
+            </div>
+            <p class="property-desc">
+              Определяет, могут ли элементы переноситься на новую строку.
+              Значения: nowrap (по умолчанию), wrap, wrap-reverse.
+            </p>
+            <code>flex-wrap: wrap;</code>
+            <div class="demo-container">
+              <div class="flex-demo-box" style="flex-wrap: wrap; width: 300px">
+                <div class="demo-item" style="width: 150px">Широкий 1</div>
+                <div class="demo-item" style="width: 150px">Широкий 2</div>
+                <div class="demo-item" style="width: 150px">Широкий 3</div>
+              </div>
+            </div>
+          </div>
 
-                <!-- flex-grow -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">flex-grow</span>
-                        <span class="tag tag-advanced">Продвинутый</span>
-                    </div>
-                    <p class="property-desc">Определяет, насколько элемент может расти относительно других. 0 = не растет, 1+ = пропорционально.</p>
-                    <code>flex-grow: 1;</code>
-                </div>
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">align-content</span>
+              <span class="tag tag-advanced">Продвинутый</span>
+            </div>
+            <p class="property-desc">
+              Выравнивание строк в многострочном контейнере. Работает только
+              когда есть несколько строк.
+            </p>
+            <code>align-content: space-between;</code>
+          </div>
 
-                <!-- flex-shrink -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">flex-shrink</span>
-                        <span class="tag tag-advanced">Продвинутый</span>
-                    </div>
-                    <p class="property-desc">Определяет, насколько элемент может сжиматься относительно других. 0 = не сжимается.</p>
-                    <code>flex-shrink: 1;</code>
-                </div>
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">gap</span>
+              <span class="tag tag-advanced">Продвинутый</span>
+            </div>
+            <p class="property-desc">
+              Расстояние между элементами. Можно задать отдельно для строк и
+              колонок: gap: 10px 20px;
+            </p>
+            <code>gap: 20px;</code>
+          </div>
+        </section>
 
-                <!-- flex-basis -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">flex-basis</span>
-                        <span class="tag tag-advanced">Продвинутый</span>
-                    </div>
-                    <p class="property-desc">Начальный размер элемента до распределения свободного пространства. Может быть в px, %, auto.</p>
-                    <code>flex-basis: 100px;</code>
-                </div>
+        <!-- ПРАВАЯ КОЛОНКА: СВОЙСТВА ЭЛЕМЕНТОВ -->
+        <section class="lesson-section">
+          <h2>Элементы</h2>
 
-                <!-- flex -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">flex</span>
-                        <span class="tag tag-advanced">Продвинутый</span>
-                    </div>
-                    <p class="property-desc">Сокращенное свойство: flex-grow flex-shrink flex-basis. Значение по умолчанию: 0 1 auto.</p>
-                    <code>flex: 1 1 auto;</code>
-                </div>
+          <!-- flex-grow -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">flex-grow</span>
+              <span class="tag tag-advanced">Продвинутый</span>
+            </div>
+            <p class="property-desc">
+              Определяет, насколько элемент может расти относительно других. 0 =
+              не растет, 1+ = пропорционально.
+            </p>
+            <code>flex-grow: 1;</code>
+          </div>
 
-                <!-- align-self -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">align-self</span>
-                        <span class="tag tag-advanced">Продвинутый</span>
-                    </div>
-                    <p class="property-desc">Позволяет элементу иметь собственное выравнивание, отличное от align-items контейнера.</p>
-                    <code>align-self: center;</code>
-                </div>
+          <!-- flex-shrink -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">flex-shrink</span>
+              <span class="tag tag-advanced">Продвинутый</span>
+            </div>
+            <p class="property-desc">
+              Определяет, насколько элемент может сжиматься относительно других.
+              0 = не сжимается.
+            </p>
+            <code>flex-shrink: 1;</code>
+          </div>
 
-                <!-- order -->
-                <div class="flex-property">
-                    <div class="property-title">
-                        <span class="property-name">order</span>
-                        <span class="tag tag-advanced">Продвинутый</span>
-                    </div>
-                    <p class="property-desc">Определяет порядок отображения элементов. Элементы с меньшим order отображаются раньше.</p>
-                    <code>order: 2;</code>
-                </div>
+          <!-- flex-basis -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">flex-basis</span>
+              <span class="tag tag-advanced">Продвинутый</span>
+            </div>
+            <p class="property-desc">
+              Начальный размер элемента до распределения свободного
+              пространства. Может быть в px, %, auto.
+            </p>
+            <code>flex-basis: 100px;</code>
+          </div>
 
-                <!-- ИНТЕРАКТИВНАЯ ДЕМОНСТРАЦИЯ -->
-                <div class="interactive-demo">
-                    <h3>🎯 Интерактивная демонстрация Flexbox</h3>
-                    
-                    <div class="slider-container">
-                        <label for="gapSlider">Gap (расстояние между элементами): 
-                            <span id="gapValue" class="value-display">20px</span>
-                        </label>
-                        <input type="range" id="gapSlider" min="0" max="50" value="20" 
-                               oninput="updateGap(this.value)">
-                    </div>
+          <!-- flex -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">flex</span>
+              <span class="tag tag-advanced">Продвинутый</span>
+            </div>
+            <p class="property-desc">
+              Сокращенное свойство: flex-grow flex-shrink flex-basis. Значение
+              по умолчанию: 0 1 auto.
+            </p>
+            <code>flex: 1 1 auto;</code>
+          </div>
 
-                    <div class="slider-container">
-                        <label for="growSlider">Flex-grow элемента 2: 
-                            <span id="growValue" class="value-display">1</span>
-                        </label>
-                        <input type="range" id="growSlider" min="0" max="5" value="1" 
-                               oninput="updateGrow(this.value)">
-                    </div>
+          <!-- align-self -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">align-self</span>
+              <span class="tag tag-advanced">Продвинутый</span>
+            </div>
+            <p class="property-desc">
+              Позволяет элементу иметь собственное выравнивание, отличное от
+              align-items контейнера.
+            </p>
+            <code>align-self: center;</code>
+          </div>
 
-                    <div class="flex-demo-box" id="interactiveDemo">
-                        <div class="demo-item" id="item1">Flex: 1</div>
-                        <div class="demo-item" id="item2">Flex-grow: 1</div>
-                        <div class="demo-item" id="item3">Flex: 1</div>
-                    </div>
+          <!-- order -->
+          <div class="flex-property">
+            <div class="property-title">
+              <span class="property-name">order</span>
+              <span class="tag tag-advanced">Продвинутый</span>
+            </div>
+            <p class="property-desc">
+              Определяет порядок отображения элементов. Элементы с меньшим order
+              отображаются раньше.
+            </p>
+            <code>order: 2;</code>
+          </div>
 
-                    <div class="demo-controls">
-                        <button class="lesson-button" onclick="resetDemo()">🔄 Сбросить</button>
-                        <button class="lesson-button" onclick="printLesson()">🖨️ Печать урока</button>
-                        <button class="lesson-button" onclick="shareLesson()">🔗 Поделиться</button>
-                        <button class="lesson-button" onclick="markAsComplete()">✅ Отметить пройденным</button>
-                    </div>
-                </div>
+          <!-- ИНТЕРАКТИВНАЯ ДЕМОНСТРАЦИЯ -->
+          <div class="interactive-demo">
+            <h3>🎯 Интерактивная демонстрация Flexbox</h3>
 
-                <!-- ПРОГРЕСС ИЗУЧЕНИЯ -->
-                <div class="progress-container">
-                    <h4>📊 Прогресс изучения</h4>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                    <p id="progressText">Прогресс: 0%</p>
-                </div>
+            <div class="slider-container">
+              <label for="gapSlider"
+                >Gap (расстояние между элементами):
+                <span id="gapValue" class="value-display">20px</span>
+              </label>
+              <input
+                type="range"
+                id="gapSlider"
+                min="0"
+                max="50"
+                value="20"
+                oninput="updateGap(this.value)"
+              />
+            </div>
 
-                <!-- ПРИМЕР КОДА -->
-                <div class="code-example">
-                    <h4>💻 Пример практического использования Flexbox:</h4>
-                    <pre class="code-block"><code>/* Навигационная панель */
+            <div class="slider-container">
+              <label for="growSlider"
+                >Flex-grow элемента 2:
+                <span id="growValue" class="value-display">1</span>
+              </label>
+              <input
+                type="range"
+                id="growSlider"
+                min="0"
+                max="5"
+                value="1"
+                oninput="updateGrow(this.value)"
+              />
+            </div>
+
+            <div class="flex-demo-box" id="interactiveDemo">
+              <div class="demo-item" id="item1">Flex: 1</div>
+              <div class="demo-item" id="item2">Flex-grow: 1</div>
+              <div class="demo-item" id="item3">Flex: 1</div>
+            </div>
+
+            <div class="demo-controls">
+              <button class="lesson-button" onclick="resetDemo()">
+                🔄 Сбросить
+              </button>
+              <button class="lesson-button" onclick="printLesson()">
+                🖨️ Печать урока
+              </button>
+              <button class="lesson-button" onclick="shareLesson()">
+                🔗 Поделиться
+              </button>
+              <button class="lesson-button" onclick="markAsComplete()">
+                ✅ Отметить пройденным
+              </button>
+            </div>
+          </div>
+
+          <!-- ПРОГРЕСС ИЗУЧЕНИЯ -->
+          <div class="progress-container">
+            <h4>📊 Прогресс изучения</h4>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="progressText">Прогресс: 0%</p>
+          </div>
+
+          <!-- ПРИМЕР КОДА -->
+          <div class="code-example">
+            <h4>💻 Пример практического использования Flexbox:</h4>
+            <pre class="code-block"><code>/* Навигационная панель */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -777,16 +913,21 @@
         flex: 1 1 100%;
     }
 }</code></pre>
-                </div>
-            </section>
-        </div>
+          </div>
+        </section>
+      </div>
 
-        <!-- ФУТЕР УРОКА -->
-        <footer class="lesson-footer">
-            <p>© 2024 CUSTPEN - Справочник разработчика. Урок "Flexbox Свойства".</p>
-            <p>Используйте интерактивные примеры для лучшего понимания Flexbox.</p>
-            <p>Адаптивно для мобильных устройств | Поддержка печати | Сохранение прогресса</p>
-        </footer>
+      <!-- ФУТЕР УРОКА -->
+      <footer class="lesson-footer">
+        <p>
+          © 2024 CUSTPEN - Справочник разработчика. Урок "Flexbox Свойства".
+        </p>
+        <p>Используйте интерактивные примеры для лучшего понимания Flexbox.</p>
+        <p>
+          Адаптивно для мобильных устройств | Поддержка печати | Сохранение
+          прогресса
+        </p>
+      </footer>
     </div>
-    </body>
+  </body>
 </html>
