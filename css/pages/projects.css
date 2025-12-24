@@ -63,7 +63,6 @@
 /* Reset and base styles */
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -73,8 +72,6 @@ html {
 
 body {
   min-height: 100%;
-  line-height: 1.5;
-  font-family: Arial, sans-serif;
 }
 
 img, picture, video, canvas, svg {
@@ -149,6 +146,8 @@ input, button, textarea, select {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   font-family: "Arial", sans-serif;
   font-size: 16px;
   line-height: 1.6;
@@ -189,7 +188,6 @@ body {
 }
 
 .main {
-  padding: 48px 0;
   text-align: center;
 }
 .main h2 {
