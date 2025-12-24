@@ -59,9 +59,7 @@
   min-width: 52px;
   padding: 10px 8px;
   text-align: right;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   background: #1e1e1e;
   border-right: 1px solid #333;
   color: #9aa0a6;
@@ -83,9 +81,7 @@
   font-size: 14px;
   line-height: 1.5;
   overflow: auto;
-  -moz-tab-size: 2;
-    -o-tab-size: 2;
-       tab-size: 2;
+  tab-size: 2;
 }
 
 .editor-actions {
@@ -109,7 +105,6 @@
   cursor: pointer;
   font-size: 14px;
   color: #fff;
-  width: -moz-fit-content;
   width: fit-content;
 }
 @media (max-width: 480px) {
@@ -279,3 +274,5 @@
 .history-item .history-item-actions .btn-delete:hover {
   background: rgb(197.9088607595, 34.2911392405, 49.9670886076);
 }
+
+/*# sourceMappingURL=custpen.css.map */
