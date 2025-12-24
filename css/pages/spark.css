@@ -18,9 +18,6 @@
   --border: #2c3e50;
 }
 
-.element {
-  border: 1px solid;
-}
 .theme-light .element {
   color: #2c3e50;
 }
@@ -32,6 +29,9 @@
 }
 .theme-dark .element {
   background-color: #121212;
+}
+.element {
+  border: 1px solid;
 }
 .theme-light .element {
   border-color: #ecf0f1;
@@ -72,6 +72,20 @@ input, button, textarea, select {
   font: inherit;
 }
 
+.some-element {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.another-element {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
 :root {
   --primary: #3498db;
   --secondary: #2ecc71;
@@ -92,9 +106,6 @@ input, button, textarea, select {
   --border: #2c3e50;
 }
 
-.element {
-  border: 1px solid;
-}
 .theme-light .element {
   color: #2c3e50;
 }
@@ -106,6 +117,9 @@ input, button, textarea, select {
 }
 .theme-dark .element {
   background-color: #121212;
+}
+.element {
+  border: 1px solid;
 }
 .theme-light .element {
   border-color: #ecf0f1;
@@ -184,6 +198,20 @@ body {
   transform: translateY(-2px);
 }
 
+.some-element {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.another-element {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
 :root {
   --primary: #3498db;
   --secondary: #2ecc71;
@@ -204,9 +232,6 @@ body {
   --border: #2c3e50;
 }
 
-.element {
-  border: 1px solid;
-}
 .theme-light .element {
   color: #2c3e50;
 }
@@ -218,6 +243,9 @@ body {
 }
 .theme-dark .element {
   background-color: #121212;
+}
+.element {
+  border: 1px solid;
 }
 .theme-light .element {
   border-color: #ecf0f1;

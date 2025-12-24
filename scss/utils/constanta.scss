@@ -58,7 +58,22 @@ $themes: (
     }
   }
 }
+// Миксин для user-select
+@mixin user-select($value) {
+    -webkit-user-select: $value;
+    -moz-user-select: $value;
+    -ms-user-select: $value;
+    user-select: $value;
+}
 
+// Использование:
+.some-element {
+    @include user-select(none);
+}
+
+.another-element {
+    @include user-select(text);
+}
 // ===== CSS VARIABLES APPROACH =====
 :root {
   // Светлая тема по умолчанию
