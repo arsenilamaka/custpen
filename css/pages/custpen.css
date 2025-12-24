@@ -1,9 +1,5 @@
-.main-grid{
-  padding:90px 30px;
-}
-
+@charset "UTF-8";
 .panels {
-
   display: flex;
   gap: 15px;
   margin-bottom: 20px;
