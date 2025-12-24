@@ -249,31 +249,6 @@ $library-category-tools: $library-vscode-green;
 }
 
 
-body.dark-theme {
-    background-color: $dark-background;
-    color: $dark-text;
-    
-    .header {
-        background: $dark-surface;
-        border-bottom: 2px solid $dark-primary;
-        
-        h1 {
-            color: $dark-primary;
-        }
-    }
-    
-    .nav-link {
-        color: $dark-text;
-        
-        &:hover {
-            background: $dark-primary;
-        }
-    }
-    
-    .btn {
-        background: $dark-primary;
-    }
-}
 // ===== АДАПТИВНОСТЬ =====
 
 @media (max-width: 768px) {

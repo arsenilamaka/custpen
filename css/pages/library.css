@@ -278,27 +278,6 @@ ul li {
   box-shadow: 0 4px 12px rgba(78, 201, 176, 0.3);
 }
 
-body.dark-theme {
-  background-color: #121212;
-  color: #ecf0f1;
-}
-body.dark-theme .header {
-  background: #1e1e1e;
-  border-bottom: 2px solid #2980b9;
-}
-body.dark-theme .header h1 {
-  color: #2980b9;
-}
-body.dark-theme .nav-link {
-  color: #ecf0f1;
-}
-body.dark-theme .nav-link:hover {
-  background: #2980b9;
-}
-body.dark-theme .btn {
-  background: #2980b9;
-}
-
 @media (max-width: 768px) {
   .category {
     flex: 1 1 100%;

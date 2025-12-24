@@ -52,30 +52,3 @@
         background: darken($accent-color, 10%);
     }
 }
-
-
-body.dark-theme {
-    background-color: $dark-background;
-    color: $dark-text;
-    
-    .header {
-        background: $dark-surface;
-        border-bottom: 2px solid $dark-primary;
-        
-        h1 {
-            color: $dark-primary;
-        }
-    }
-    
-    .nav-link {
-        color: $dark-text;
-        
-        &:hover {
-            background: $dark-primary;
-        }
-    }
-    
-    .btn {
-        background: $dark-primary;
-    }
-}

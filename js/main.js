@@ -41,5 +41,4 @@ function changeTopic(){
         document.body.classList.toggle('dark-theme');
         console.log("функция закончена")
     });
-   
 } 

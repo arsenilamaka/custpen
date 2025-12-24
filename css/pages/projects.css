@@ -102,7 +102,6 @@ input, button, textarea, select {
 }
 
 .feature-card {
-  background: #ffffff;
   padding: 32px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -111,27 +110,6 @@ input, button, textarea, select {
 }
 .feature-card:hover {
   transform: translateY(-5px);
-}
-
-body.dark-theme {
-  background-color: #121212;
-  color: #ecf0f1;
-}
-body.dark-theme .header {
-  background: #1e1e1e;
-  border-bottom: 2px solid #2980b9;
-}
-body.dark-theme .header h1 {
-  color: #2980b9;
-}
-body.dark-theme .nav-link {
-  color: #ecf0f1;
-}
-body.dark-theme .nav-link:hover {
-  background: #2980b9;
-}
-body.dark-theme .btn {
-  background: #2980b9;
 }
 
 /*# sourceMappingURL=projects.css.map */

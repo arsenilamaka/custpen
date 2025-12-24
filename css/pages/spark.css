@@ -135,25 +135,4 @@ input, button, textarea, select {
   background: rgb(213.698630137, 43.8356164384, 26.301369863);
 }
 
-body.dark-theme {
-  background-color: #121212;
-  color: #ecf0f1;
-}
-body.dark-theme .header {
-  background: #1e1e1e;
-  border-bottom: 2px solid #2980b9;
-}
-body.dark-theme .header h1 {
-  color: #2980b9;
-}
-body.dark-theme .nav-link {
-  color: #ecf0f1;
-}
-body.dark-theme .nav-link:hover {
-  background: #2980b9;
-}
-body.dark-theme .btn {
-  background: #2980b9;
-}
-
 /*# sourceMappingURL=spark.css.map */
