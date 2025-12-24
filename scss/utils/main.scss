@@ -31,8 +31,7 @@ body {
         text-decoration: none;
         padding: $spacing-xs $spacing-sm;
         border-radius: 4px;
-        transition: all 0.3s ease;
-        
+                
         &:hover {
             background: $primary-color;
             color: $white;

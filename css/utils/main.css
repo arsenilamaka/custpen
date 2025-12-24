@@ -115,7 +115,6 @@ body {
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 4px;
-  transition: all 0.3s ease;
 }
 .nav-link:hover {
   background: #3498db;
