@@ -223,9 +223,39 @@ ul {
 
 // Кнопки действий
 .actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    
+    button {
+        padding: 8px 16px;
+        background: $library-vscode-blue;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-family: 'Segoe UI', sans-serif;
+        
+        &:hover {
+            background: lighten($library-vscode-blue, 10%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(86, 156, 214, 0.3);
+        }
+        
+        &:first-child {
+            background: $library-vscode-green;
+            
+            &:hover {
+                background: lighten($library-vscode-green, 10%);
+                box-shadow: 0 4px 12px rgba(78, 201, 176, 0.3);
+            }
+        }
+    }
+}
+
+
+// ===== АДАПТИВНОСТЬ =====
 
   button {
     padding: 8px 16px;
