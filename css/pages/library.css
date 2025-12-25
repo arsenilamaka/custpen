@@ -94,24 +94,20 @@ body {
   background-color: #ecf0f1;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
 .header {
   background: #ffffff;
   padding: 24px 0;
   border-bottom: 2px solid #3498db;
+  z-index: 1001;
 }
 .header h1 {
   color: #3498db;
-  margin-bottom: 16px;
 }
 
 .nav {
+  align-items: center;
   display: flex;
+  align-items: center;
   gap: 24px;
 }
 .nav-link {
@@ -119,11 +115,38 @@ body {
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 4px;
-  transition: all 0.3s ease;
 }
 .nav-link:hover {
   background: #3498db;
   color: #ffffff;
+}
+
+.toogle-switch {
+  position: relative;
+  height: 40px;
+  width: 80px;
+  border-radius: 20px;
+  appearance: none;
+  background-color: #7f8c8d;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+.toogle-switch::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: #ffffff;
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.toogle-switch:checked {
+  background-color: #2ecc71;
+}
+.toogle-switch:checked::before {
+  left: 40px;
 }
 
 .main {
@@ -147,6 +170,27 @@ body {
 .btn:hover {
   background: rgb(33.1380753138, 125.1882845188, 186.8619246862);
   transform: translateY(-2px);
+}
+
+body.dark-theme {
+  background-color: #121212;
+  color: #ecf0f1;
+}
+body.dark-theme .header {
+  background: #1e1e1e;
+  border-bottom: 2px solid #2980b9;
+}
+body.dark-theme .header h1 {
+  color: #2980b9;
+}
+body.dark-theme .nav-link {
+  color: #ecf0f1;
+}
+body.dark-theme .nav-link:hover {
+  background: #2980b9;
+}
+body.dark-theme .btn {
+  background: #2980b9;
 }
 
 .some-element {
@@ -213,7 +257,7 @@ body {
 
 .main {
   display: flex !important;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 #lessonFrame {
@@ -302,7 +346,6 @@ body {
   top: 0;
   bottom: 0;
   width: 300px;
-  max-height: 100%;
   background: #252526;
   color: white;
   z-index: 1000;
@@ -330,6 +373,14 @@ body {
   margin: 0 0 20px 0;
   color: white;
   font-size: 1.5rem;
+}
+
+.sidebar-open {
+  flex: 1;
+  background: #252526;
+  color: white;
+  z-index: 1000;
+  overflow: auto;
 }
 
 .features-grid {
@@ -395,7 +446,7 @@ ul li {
   font-family: "Segoe UI", sans-serif;
 }
 .actions button:hover {
-  background: rgba(86, 156, 214, 0.8);
+  background: rgb(127.0428571429, 180.0428571429, 223.9571428571);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(86, 156, 214, 0.3);
 }
@@ -403,6 +454,29 @@ ul li {
   background: #4ec9b0;
 }
 .actions button:first-child:hover {
+  background: rgb(117.0779220779, 212.9220779221, 193.4415584416);
+  box-shadow: 0 4px 12px rgba(78, 201, 176, 0.3);
+}
+
+button {
+  padding: 8px 16px;
+  background: #569cd6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Segoe UI", sans-serif;
+}
+button:hover {
+  background: rgba(86, 156, 214, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(86, 156, 214, 0.3);
+}
+button:first-child {
+  background: #4ec9b0;
+}
+button:first-child:hover {
   background: rgba(78, 201, 176, 0.8);
   box-shadow: 0 4px 12px rgba(78, 201, 176, 0.3);
 }
