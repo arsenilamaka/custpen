@@ -11,97 +11,69 @@
     <header class="header">
       <div class="header-panel">
         <nav class="nav">
-                      <div>
+          <div>
             <h1><a href="../index.html">CUSTPEN</a></h1> <!--В будушем лого-->
-            </div>
-          <div class="nav-link">
-            <a href="../../pages/projects/projects.html" class="nav-link"
-              >Projects</a
-            >
           </div>
           <div class="nav-link">
-            <a href="../../pages/collections/collections.html" class="nav-link"
-              >Collection</a
-            >
+            <a href="../../pages/projects/projects.html" class="nav-link">Projects</a>
           </div>
           <div class="nav-link">
-            <a href="../../pages/custpen/custpen.html" class="nav-link">
-              Custpen</a
-            >
+            <a href="../../pages/collections/collections.html" class="nav-link">Collection</a>
           </div>
           <div class="nav-link">
-            <a href="../../pages/library/library.html" class="nav-link">
-              Library</a
-            >
+            <a href="../../pages/custpen/custpen.html" class="nav-link">Custpen</a>
+          </div>
+          <div class="nav-link">
+            <a href="../../pages/library/library.html" class="nav-link">Library</a>
           </div>
           <div class="nav-link">
             <a href="../../pages/spark/spark.html" class="nav-link">Spark</a>
           </div>
           <div>
-            <input type="checkbox" id="theme-toggle" class="toogle-switch"></input>
+            <input type="checkbox" id="theme-toggle" class="toogle-switch">
           </div>
         </nav>
       </div>
     </header>
-    <!-- это добавить -->
+
     <main class="main">
       <div class="sidebar-panel" id="sidebarPanel">
         <div class="sidebar-content">
           <h3 class="sidebar-title">Справочник разработчика</h3>
+          <!-- Меню будет сгенерировано через JavaScript -->
         </div>
       </div>
-    </div>
-  
-    <div class="container" id="mainContainer">
-      <header class="header">
-        <h1>CUSTPEN - Подключение</h1>
-        <nav class="nav">
-          <a href="../../index.html" class="nav-link">Главная</a>
-          <a href="../projects/projects.html" class="nav-link">Проекты</a>
-          <a href="../custpen/custpen.html" class="nav-link">Редактор</a>
-          <a href="../spark/spark.html" class="nav-link">Заказы</a>
-        </nav>
-      </header>
-      <main class="main">
-        <section class="content-area" id="contentArea">
-          <h2 id="contentTitle">Выберите раздел в меню</h2>
-          
-          <!-- === ДОБАВЛЕНО: Сетка карточек с Flexbox === -->
-          <div class="features-grid">
-            <div class="feature-card">
-              <h3>HTML</h3>
-              <p>Теги, атрибуты, семантика, формы</p>
-              <p class="hint">Нажмите на категорию в боковом меню</p>
+
+      <div class="container" id="mainContainer">
+        <main>
+          <section class="content-area" id="contentArea">
+            <iframe 
+              id="lessonFrame" 
+              style="display: none; width: 100%; height:100vh; border: none; margin-top: 20px; background: white;"
+              frameborder="0"
+              scrolling="no"
+              title="Урок"
+            ></iframe>
+            <!-- Контейнер для отображения статичного контента -->
+            <div class="content-display" id="contentDisplay">
+              <div class="welcome-card">
+                <h3>Добро пожаловать в справочник!</h3>
+                <p>Используйте боковое меню для навигации:</p>
+                <ul>
+                  <li>Кликните на категорию (HTML, CSS, JS, Tools) для раскрытия меню</li>
+                  <li>Выберите конкретную тему для просмотра информации</li>
+                  <li>Используйте кнопки "Сохранить" и "Копировать"</li>
+                  <li>На мобильных: нажмите кнопку ☰ для открытия меню</li>
+                </ul>
+                <p><strong>Flexbox меню:</strong> Все элементы используют CSS Flexbox для адаптивного расположения.</p>
+              </div>
             </div>
-            <div class="feature-card">
-              <h3>CSS</h3>
-              <p>Селекторы, Flexbox, Grid, анимации</p>
-              <p class="hint">Используйте выпадающие меню</p>
-            </div>
-            <div class="feature-card">
-              <h3>JavaScript</h3>
-              <p>Функции, DOM, промисы, классы</p>
-              <p class="hint">Кликайте по темам для деталей</p>
-            </div>
-          </div>
-          
-          <div class="content-display" id="contentDisplay">
-            <div class="welcome-card">
-              <h3>Добро пожаловать в справочник!</h3>
-              <p>Используйте боковое меню для навигации:</p>
-              <ul>
-                <li>Кликните на категорию (HTML, CSS, JS, Tools) для раскрытия меню</li>
-                <li>Выберите конкретную тему для просмотра информации</li>
-                <li>Используйте кнопки "Сохранить" и "Копировать"</li>
-                <li>На мобильных: нажмите кнопку ☰ для открытия меню</li>
-              </ul>
-              <p><strong>Flexbox меню:</strong> Все элементы используют CSS Flexbox для адаптивного расположения.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        </main>
+      </div>
     </main>
-     <script src="../../js/main.js"></script>
+
+    <script src="../../js/main.js"></script>
     <script src="library.js"></script>
   </body>
 </html>

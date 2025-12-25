@@ -37,7 +37,7 @@ $library-category-tools: $library-vscode-green;
 // ===== ШАГ 2: УБРАТЬ СКРОЛЛ =====
 .main {
   display: flex !important;
- min-height: 100%;
+  min-height: 100vh;
 }
 #lessonFrame {
   border: none;
@@ -134,7 +134,6 @@ $library-category-tools: $library-vscode-green;
   top: 0;
   bottom: 0;
   width: 300px;
-  max-height: 100%;
   background: $library-sidebar-bg;
   color: white;
   z-index: 1000;
@@ -167,7 +166,13 @@ $library-category-tools: $library-vscode-green;
   color: white;
   font-size: 1.5rem;
 }
-
+.sidebar-open {
+  flex: 1;
+  background: #252526;
+  color: white;
+  z-index: 1000;
+  overflow: auto;
+}
 // === ДОБАВЛЕНО: Карточки с Flexbox в основном контенте ===
 .features-grid {
   display: flex;
@@ -188,7 +193,7 @@ $library-category-tools: $library-vscode-green;
 
 .content-area {
   flex: 1; /* Занимает всё оставшееся пространство в main */
- min-height: 100%; /* Полная высота */
+  min-height: 100%; /* Полная высота */
   overflow-y: auto; /* Скролл только здесь */
   padding: 0 5px; /* Убираем padding чтобы не мешал */
 }
@@ -223,39 +228,9 @@ ul {
 
 // Кнопки действий
 .actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    
-    button {
-        padding: 8px 16px;
-        background: $library-vscode-blue;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        font-family: 'Segoe UI', sans-serif;
-        
-        &:hover {
-            background: lighten($library-vscode-blue, 10%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(86, 156, 214, 0.3);
-        }
-        
-        &:first-child {
-            background: $library-vscode-green;
-            
-            &:hover {
-                background: lighten($library-vscode-green, 10%);
-                box-shadow: 0 4px 12px rgba(78, 201, 176, 0.3);
-            }
-        }
-    }
-}
-
-
-// ===== АДАПТИВНОСТЬ =====
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
 
   button {
     padding: 8px 16px;
@@ -268,7 +243,7 @@ ul {
     font-family: "Segoe UI", sans-serif;
 
     &:hover {
-      background: rgba(86, 156, 214, 0.8);
+      background: lighten($library-vscode-blue, 10%);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(86, 156, 214, 0.3);
     }
@@ -277,9 +252,37 @@ ul {
       background: $library-vscode-green;
 
       &:hover {
-        background: rgba(78, 201, 176, 0.8);
+        background: lighten($library-vscode-green, 10%);
         box-shadow: 0 4px 12px rgba(78, 201, 176, 0.3);
       }
+    }
+  }
+}
+
+// ===== АДАПТИВНОСТЬ =====
+
+button {
+  padding: 8px 16px;
+  background: $library-vscode-blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Segoe UI", sans-serif;
+
+  &:hover {
+    background: rgba(86, 156, 214, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(86, 156, 214, 0.3);
+  }
+
+  &:first-child {
+    background: $library-vscode-green;
+
+    &:hover {
+      background: rgba(78, 201, 176, 0.8);
+      box-shadow: 0 4px 12px rgba(78, 201, 176, 0.3);
     }
   }
 }
