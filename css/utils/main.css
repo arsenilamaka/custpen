@@ -99,21 +99,49 @@ body {
   border-bottom: 2px solid #3498db;
   z-index: 1001;
 }
-.header h1 {
+.header h1, .header a {
   color: #3498db;
+  text-decoration: none;
+}
+
+.header-panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .nav {
-  align-items: center;
   display: flex;
   align-items: center;
   gap: 24px;
+}
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+.nav h1 {
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .nav h1 {
+    font-size: 1.5rem;
+  }
 }
 .nav-link {
   color: #2c3e50;
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 4px;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 16px;
+  }
 }
 .nav-link:hover {
   background: #3498db;
@@ -122,9 +150,10 @@ body {
 
 .toogle-switch {
   position: relative;
-  height: 40px;
-  width: 80px;
-  border-radius: 20px;
+  margin-top: 10px;
+  height: 32px;
+  width: 64px;
+  border-radius: 16px;
   appearance: none;
   background-color: #7f8c8d;
   transition: background-color 0.3s ease;
@@ -133,8 +162,8 @@ body {
 .toogle-switch::before {
   content: "";
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   top: 0;
   left: 0;
   border-radius: 50%;
@@ -145,7 +174,7 @@ body {
   background-color: #2ecc71;
 }
 .toogle-switch:checked::before {
-  left: 40px;
+  left: 32px;
 }
 
 .main {
