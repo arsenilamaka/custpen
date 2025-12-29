@@ -10,43 +10,69 @@ body {
     color: $text-color;
     background-color: $background-color;
 }
-
 .header {
     background: $white;
     padding: $spacing-md 0;
     border-bottom: 2px solid $primary-color;
     z-index: 1001;
     
-    h1 {
+    h1, a {
         color: $primary-color;
+        text-decoration: none;
     }
 }
 
+.header-panel {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+}
+
 .nav {
-    align-items: center;
     display: flex;
     align-items: center;
     gap: $spacing-md;
+    
+    // На мобильных - вертикальное меню
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: $spacing-sm;
+    }
+    
+    h1 {
+        margin: 0;
+        
+        @media (max-width: 768px) {
+            font-size: 1.5rem;
+        }
+    }
     
     &-link {
         color: $text-color;
         text-decoration: none;
         padding: $spacing-xs $spacing-sm;
         border-radius: 4px;
+        white-space: nowrap;
+        
+        @media (max-width: 768px) {
+            width: 100%;
+            text-align: center;
+            padding: $spacing-sm;
+        }
                  
         &:hover {
             background: $primary-color;
             color: $white;
         }
-
     }
 }
+
 .toogle-switch {
     position: relative;
-    // margin-top: 10px;
-    height: 40px;
-    width: 80px;
-    border-radius: 20px;
+    margin-top:10px;
+    height: 32px;
+    width: 64px;
+    border-radius: 16px;
     appearance: none;
     background-color: $light-text-secondary;
     transition: background-color 0.3s ease;
@@ -55,20 +81,22 @@ body {
     &::before {
         content: "";
         position: absolute;
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         top: 0;
         left: 0;
         border-radius: 50%;
         background-color: $white;
         transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        
     }
 
     &:checked {
         background-color: $light-secondary;
 
         &::before {
-            left: 40px;
+            left: 32px;
+            
         }
     }
 }

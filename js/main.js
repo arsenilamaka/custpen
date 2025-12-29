@@ -1,11 +1,16 @@
+import { drawingHeader } from './header.js';
+
 console.log('CUSTPEN project initialized!');
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM fully loaded and parsed');
     
     initApp();
-    changeTopic()
+    drawingHeader();
+    changeTopic();
 });
+
+
 
 function initApp() {
     const startBtn = document.getElementById('startBtn');
